@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="left_drawer_array">
+        <item>@string/home</item>
+        <item>@string/actual_matches</item>
+        <item>@string/standing</item>
+        <item>@string/favourite_matches</item>
+    </string-array>
+</resources>
