@@ -12,10 +12,9 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import gkalapis.scorerui.PlScoresApplication;
+import gkalapis.scorerui.ScorerUiApplication;
 import gkalapis.scorerui.R;
 import gkalapis.scorerui.model.api.Match;
-import gkalapis.scorerui.model.api.Result;
 import gkalapis.scorerui.model.db.FavouriteMatch;
 import gkalapis.scorerui.ui.menu.DrawerActivity;
 
@@ -35,7 +34,7 @@ public class LiveMatchesActivity extends DrawerActivity implements LiveMatchesSc
         super.onCreate(savedInstanceState);
         addView(R.layout.activity_livematches, R.string.actual_matches);
 
-        PlScoresApplication.injector.inject(this);
+        ScorerUiApplication.injector.inject(this);
 
         recyclerViewMatches = (RecyclerView) findViewById(R.id.recyclerViewMatches);
         LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());

@@ -2,6 +2,7 @@ package gkalapis.scorerui.network;
 
 import gkalapis.scorerui.model.api.MatchWrapper;
 import gkalapis.scorerui.model.api.Table;
+import gkalapis.scorerui.model.api.UserWrapper;
 import retrofit2.Call;
 import retrofit2.http.GET;
 
@@ -22,5 +23,8 @@ public interface FootballDataApi {
      */
     @GET("/users/search/findAllByOrderByPointsDesc")
     Call<Table> getLeagueTable();
+
+    @GET("/users/findAll")
+    Call<UserWrapper> listUsers();
 
 }

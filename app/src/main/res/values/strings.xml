@@ -1,10 +1,11 @@
 <resources>
-    <string name="app_name">PL Scores</string>
-    <string name="button_show_live_matches">See actual results</string>
-    <string name="welcome_text">Welcome in the Premier League Scores!
-        You can follow every round of the famous English
-        Premier League including live results and table.
-        You can also save your favourite matches.</string>
+    <string name="app_name">Scorer</string>
+    <string name="button_show_live_matches">See standing</string>
+    <string name="welcome_text">Welcome in the Scorer application!
+        After registration you can list the upcoming matches
+        and you can bet on them. You can also list the other players
+        if you are interested how good you are :). Good luck!
+    </string>
 
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>

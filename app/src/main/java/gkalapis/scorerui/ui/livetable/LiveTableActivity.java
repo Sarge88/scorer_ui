@@ -11,7 +11,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import gkalapis.scorerui.PlScoresApplication;
+import gkalapis.scorerui.ScorerUiApplication;
 import gkalapis.scorerui.R;
 import gkalapis.scorerui.model.api.Team;
 import gkalapis.scorerui.ui.menu.DrawerActivity;
@@ -31,7 +31,7 @@ public class LiveTableActivity extends DrawerActivity implements LiveTableScreen
         super.onCreate(savedInstanceState);
         addView(R.layout.activity_livetable, R.string.standing);
 
-        PlScoresApplication.injector.inject(this);
+        ScorerUiApplication.injector.inject(this);
 
         recyclerViewTeams = (RecyclerView) findViewById(R.id.recyclerViewTeams);
         LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
