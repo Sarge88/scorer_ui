@@ -10,7 +10,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import gkalapis.scorerui.ScorerUiApplication;
+import gkalapis.scorerui.PlScoresApplication;
 import gkalapis.scorerui.R;
 import gkalapis.scorerui.model.db.FavouriteMatch;
 import gkalapis.scorerui.ui.menu.DrawerActivity;
@@ -29,7 +29,7 @@ public class FavouriteMatchesActivity extends DrawerActivity implements Favourit
         super.onCreate(savedInstanceState);
         addView(R.layout.activity_favouritematches, R.string.favourite_matches);
 
-        ScorerUiApplication.injector.inject(this);
+        PlScoresApplication.injector.inject(this);
 
         recyclerViewFavouriteMatches = (RecyclerView) findViewById(R.id.recyclerViewFavouriteMatches);
         LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());

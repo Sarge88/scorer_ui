@@ -2,7 +2,7 @@ package gkalapis.scorerui.interactor.livematches;
 
 import javax.inject.Inject;
 
-import gkalapis.scorerui.ScorerUiApplication;
+import gkalapis.scorerui.PlScoresApplication;
 import gkalapis.scorerui.interactor.common.CommonNetworkInteractor;
 import gkalapis.scorerui.model.api.MatchWrapper;
 import gkalapis.scorerui.network.FootballDataApi;
@@ -15,7 +15,7 @@ public class LiveMatchesInteractor extends CommonNetworkInteractor {
     FootballDataApi footballDataApi;
 
     public LiveMatchesInteractor() {
-        ScorerUiApplication.injector.inject(this);
+        PlScoresApplication.injector.inject(this);
     }
 
     public void getLiveMatches() {

@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 import gkalapis.scorerui.R;
 import gkalapis.scorerui.model.api.Match;
+import gkalapis.scorerui.model.api.Result;
 
 public class LiveMatchesAdapter extends RecyclerView.Adapter<LiveMatchesAdapter.ViewHolder> {
 
@@ -30,7 +31,7 @@ public class LiveMatchesAdapter extends RecyclerView.Adapter<LiveMatchesAdapter.
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) { //ez jelenit meg egy sort,  holder az objektum
+    public void onBindViewHolder(ViewHolder holder, int position) {
         Match match = matchList.get(position);
 
         String[] dateAndTime = match.getDateTime().toString().split("T");
@@ -42,9 +43,8 @@ public class LiveMatchesAdapter extends RecyclerView.Adapter<LiveMatchesAdapter.
         holder.tvHomeTeamGoals.setText(match.getHomeTeamGoals() == null ? "-" : match.getHomeTeamGoals().toString());
         holder.tvAwayTeamGoals.setText(match.getAwayTeamGoals() == null ? "-" : match.getAwayTeamGoals().toString());
 
-        // TODO
-        //if (match.isFavourite()) {
-        if (false) {
+
+        if (match.isFavouriteMatch()) {
             holder.favIcon.setImageResource(R.drawable.star_checked);
             holder.favIcon.setTag(R.drawable.star_checked);
         } else {

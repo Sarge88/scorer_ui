@@ -12,9 +12,10 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import gkalapis.scorerui.ScorerUiApplication;
+import gkalapis.scorerui.PlScoresApplication;
 import gkalapis.scorerui.R;
 import gkalapis.scorerui.model.api.Match;
+import gkalapis.scorerui.model.api.Result;
 import gkalapis.scorerui.model.db.FavouriteMatch;
 import gkalapis.scorerui.ui.menu.DrawerActivity;
 
@@ -34,7 +35,7 @@ public class LiveMatchesActivity extends DrawerActivity implements LiveMatchesSc
         super.onCreate(savedInstanceState);
         addView(R.layout.activity_livematches, R.string.actual_matches);
 
-        ScorerUiApplication.injector.inject(this);
+        PlScoresApplication.injector.inject(this);
 
         recyclerViewMatches = (RecyclerView) findViewById(R.id.recyclerViewMatches);
         LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
@@ -48,8 +49,7 @@ public class LiveMatchesActivity extends DrawerActivity implements LiveMatchesSc
             public void onItemClick(int position, View v) {
                 Match match = matchArrayList.get(position);
 
-                //if (match.isFavourite()) {
-                if (false) {
+                if (match.isFavouriteMatch()) {
                     Toast.makeText(getApplicationContext(), "Please use the Favourite matches screen to remove matches from favourites", Toast.LENGTH_LONG).show();
                 } else {
                     FavouriteMatch favouriteMatch = createFavouriteMatchFromFixture(match);

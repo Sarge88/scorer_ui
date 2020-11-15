@@ -8,7 +8,7 @@ import java.util.concurrent.Executor;
 
 import javax.inject.Inject;
 
-import gkalapis.scorerui.ScorerUiApplication;
+import gkalapis.scorerui.PlScoresApplication;
 import gkalapis.scorerui.di.Network;
 import gkalapis.scorerui.interactor.favouritematches.FavouriteMatchesInteractor;
 import gkalapis.scorerui.interactor.livematches.GetLiveMatchesEvent;
@@ -31,7 +31,7 @@ public class LiveMatchesPresenter extends CommonPresenter<LiveMatchesScreen> {
     @Override
     public void attachScreen(LiveMatchesScreen screen) {
         super.attachScreen(screen);
-        ScorerUiApplication.injector.inject(this);
+        PlScoresApplication.injector.inject(this);
     }
 
     public void refreshMatches() {

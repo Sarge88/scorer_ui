@@ -7,7 +7,7 @@ import android.widget.Button;
 
 import javax.inject.Inject;
 
-import gkalapis.scorerui.ScorerUiApplication;
+import gkalapis.scorerui.PlScoresApplication;
 import gkalapis.scorerui.R;
 import gkalapis.scorerui.ui.livematches.LiveMatchesActivity;
 import gkalapis.scorerui.ui.menu.DrawerActivity;
@@ -22,7 +22,7 @@ public class MainActivity extends DrawerActivity implements MainScreen {
         super.onCreate(savedInstanceState);
         addView(R.layout.activity_main, R.string.welcome);
 
-        ScorerUiApplication.injector.inject(this);
+        PlScoresApplication.injector.inject(this);
 
         Button btnShowLiveMatches = (Button) findViewById(R.id.btnShowLiveMatches);
         btnShowLiveMatches.setOnClickListener(new View.OnClickListener() {

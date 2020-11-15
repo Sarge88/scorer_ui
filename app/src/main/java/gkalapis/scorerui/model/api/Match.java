@@ -25,12 +25,10 @@ public class Match {
 
     private Date dateTime;
 
-    private String matchResult;
-
     public Match() {}
 
     public Match(Integer id, Team homeTeam, Team awayTeam, String homeTeamName, String awayTeamName,
-                 Integer homeTeamGoals, Integer awayTeamGoals, String status, int round, Date dateTime, String matchResult) {
+                 Integer homeTeamGoals, Integer awayTeamGoals, String status, int round, Date dateTime) {
         this.id = id;
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
@@ -41,7 +39,6 @@ public class Match {
         this.status = status;
         this.round = round;
         this.dateTime = dateTime;
-        this.matchResult = matchResult;
     }
 
     public Integer getId() {
@@ -123,8 +120,4 @@ public class Match {
     public void setDateTime(Date dateTime) {
         this.dateTime = dateTime;
     }
-
-    public String getMatchResult() { return matchResult; }
-
-    public void setMatchResult(String result) { this.matchResult = result; }
 }
