@@ -1,11 +1,14 @@
 package gkalapis.scorerui.interactor.users;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import gkalapis.scorerui.ScorerUiApplication;
 import gkalapis.scorerui.interactor.common.CommonNetworkInteractor;
 import gkalapis.scorerui.interactor.livematches.GetLiveMatchesEvent;
-import gkalapis.scorerui.model.api.UserWrapper;
+import gkalapis.scorerui.model.api.Match;
+import gkalapis.scorerui.model.api.User;
 import gkalapis.scorerui.network.FootballDataApi;
 import retrofit2.Call;
 import retrofit2.Response;
@@ -23,8 +26,8 @@ public class UsersInteractor extends CommonNetworkInteractor {
         GetLiveMatchesEvent event = new GetLiveMatchesEvent();
 
         try {
-            Call<UserWrapper> call = footballDataApi.listUsers();
-            Response<UserWrapper> response = call.execute();
+            Call <List<User>> call = footballDataApi.listUsers();
+            Response <List<User>> response = call.execute();
 
             throwExceptionIfNecessary(response);
             //createAndPostEvent(event, response, response.body().getUsers());   TODO

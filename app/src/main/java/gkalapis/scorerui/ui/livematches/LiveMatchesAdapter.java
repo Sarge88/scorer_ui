@@ -30,7 +30,7 @@ public class LiveMatchesAdapter extends RecyclerView.Adapter<LiveMatchesAdapter.
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) { //ez jelenit meg egy sort,  holder az objektum
         Match match = matchList.get(position);
 
         String[] dateAndTime = match.getDateTime().toString().split("T");
