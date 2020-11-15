@@ -7,7 +7,7 @@ import java.util.concurrent.Executor;
 
 import javax.inject.Inject;
 
-import gkalapis.scorerui.PlScoresApplication;
+import gkalapis.scorerui.ScorerUiApplication;
 import gkalapis.scorerui.di.Network;
 import gkalapis.scorerui.interactor.livetable.GetLiveTableEvent;
 import gkalapis.scorerui.interactor.livetable.LiveTableInteractor;
@@ -25,7 +25,7 @@ public class LiveTablePresenter extends CommonPresenter<LiveTableScreen> {
     @Override
     public void attachScreen(LiveTableScreen screen) {
         super.attachScreen(screen);
-        PlScoresApplication.injector.inject(this);
+        ScorerUiApplication.injector.inject(this);
     }
 
     public void refreshTable() {

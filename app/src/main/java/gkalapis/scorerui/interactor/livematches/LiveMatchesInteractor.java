@@ -1,10 +1,10 @@
 package gkalapis.scorerui.interactor.livematches;
 
+import java.util.List;
 import javax.inject.Inject;
-
-import gkalapis.scorerui.PlScoresApplication;
+import gkalapis.scorerui.ScorerUiApplication;
 import gkalapis.scorerui.interactor.common.CommonNetworkInteractor;
-import gkalapis.scorerui.model.api.MatchWrapper;
+import gkalapis.scorerui.model.api.Match;
 import gkalapis.scorerui.network.FootballDataApi;
 import retrofit2.Call;
 import retrofit2.Response;
@@ -15,18 +15,18 @@ public class LiveMatchesInteractor extends CommonNetworkInteractor {
     FootballDataApi footballDataApi;
 
     public LiveMatchesInteractor() {
-        PlScoresApplication.injector.inject(this);
+        ScorerUiApplication.injector.inject(this);
     }
 
     public void getLiveMatches() {
         GetLiveMatchesEvent event = new GetLiveMatchesEvent();
 
         try {
-            Call<MatchWrapper> call = footballDataApi.listMatches();
-            Response<MatchWrapper> response = call.execute();
+            Call<List<Match>> call = footballDataApi.listMatches();
+            Response<List<Match>> response = call.execute();
 
             throwExceptionIfNecessary(response);
-            creaateAndPostEvent(event, response, response.body().getMatches());
+            creaateAndPostEvent(event, response, response.body());
         } catch (Exception e) {
             createAndPostErrorEvent(event, e);
         }

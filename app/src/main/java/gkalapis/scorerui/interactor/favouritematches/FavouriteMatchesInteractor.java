@@ -3,13 +3,13 @@ package gkalapis.scorerui.interactor.favouritematches;
 import java.util.ArrayList;
 import java.util.List;
 
-import gkalapis.scorerui.PlScoresApplication;
+import gkalapis.scorerui.ScorerUiApplication;
 import gkalapis.scorerui.model.db.FavouriteMatch;
 
 public class FavouriteMatchesInteractor {
 
     public FavouriteMatchesInteractor() {
-        PlScoresApplication.injector.inject(this);
+        ScorerUiApplication.injector.inject(this);
     }
 
     public List<FavouriteMatch> getFavouriteMatches() {

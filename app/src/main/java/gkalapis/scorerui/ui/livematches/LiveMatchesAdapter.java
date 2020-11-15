@@ -12,7 +12,6 @@ import java.util.ArrayList;
 
 import gkalapis.scorerui.R;
 import gkalapis.scorerui.model.api.Match;
-import gkalapis.scorerui.model.api.Result;
 
 public class LiveMatchesAdapter extends RecyclerView.Adapter<LiveMatchesAdapter.ViewHolder> {
 

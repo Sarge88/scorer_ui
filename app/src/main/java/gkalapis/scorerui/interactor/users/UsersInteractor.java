@@ -7,7 +7,6 @@ import javax.inject.Inject;
 import gkalapis.scorerui.ScorerUiApplication;
 import gkalapis.scorerui.interactor.common.CommonNetworkInteractor;
 import gkalapis.scorerui.interactor.livematches.GetLiveMatchesEvent;
-import gkalapis.scorerui.model.api.Match;
 import gkalapis.scorerui.model.api.User;
 import gkalapis.scorerui.network.FootballDataApi;
 import retrofit2.Call;
@@ -30,7 +29,7 @@ public class UsersInteractor extends CommonNetworkInteractor {
             Response <List<User>> response = call.execute();
 
             throwExceptionIfNecessary(response);
-            //createAndPostEvent(event, response, response.body().getUsers());   TODO
+            //createAndPostEvent(event, response, response.body().getUsers());
         } catch (Exception e) {
             createAndPostErrorEvent(event, e);
         }

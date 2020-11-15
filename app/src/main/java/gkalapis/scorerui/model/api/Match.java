@@ -25,6 +25,8 @@ public class Match {
 
     private Date dateTime;
 
+    private boolean favouriteMatch;
+
     public Match() {}
 
     public Match(Integer id, Team homeTeam, Team awayTeam, String homeTeamName, String awayTeamName,
@@ -120,4 +122,9 @@ public class Match {
     public void setDateTime(Date dateTime) {
         this.dateTime = dateTime;
     }
+
+    public boolean isFavouriteMatch() { return favouriteMatch; }
+
+    public void setFavouriteMatch(boolean favouriteMatch) { this.favouriteMatch = favouriteMatch; }
+
 }

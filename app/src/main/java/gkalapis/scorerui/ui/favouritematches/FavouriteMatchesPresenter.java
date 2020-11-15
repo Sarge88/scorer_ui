@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import javax.inject.Inject;
 
-import gkalapis.scorerui.PlScoresApplication;
+import gkalapis.scorerui.ScorerUiApplication;
 import gkalapis.scorerui.interactor.favouritematches.FavouriteMatchesInteractor;
 import gkalapis.scorerui.model.db.FavouriteMatch;
 import gkalapis.scorerui.ui.Presenter;
@@ -17,7 +17,7 @@ public class FavouriteMatchesPresenter extends Presenter<FavouriteMatchesScreen>
     @Override
     public void attachScreen(FavouriteMatchesScreen screen) {
         super.attachScreen(screen);
-        PlScoresApplication.injector.inject(this);
+        ScorerUiApplication.injector.inject(this);
     }
 
     public void showFavouriteMatches() {
