@@ -25,12 +25,14 @@ public class Match {
 
     private Date dateTime;
 
+    private String matchResult;
+
     private boolean favouriteMatch;
 
     public Match() {}
 
     public Match(Integer id, Team homeTeam, Team awayTeam, String homeTeamName, String awayTeamName,
-                 Integer homeTeamGoals, Integer awayTeamGoals, String status, int round, Date dateTime) {
+                 Integer homeTeamGoals, Integer awayTeamGoals, String status, int round, Date dateTime, String matchResult) {
         this.id = id;
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
@@ -122,6 +124,10 @@ public class Match {
     public void setDateTime(Date dateTime) {
         this.dateTime = dateTime;
     }
+
+    public String getMatchResult() { return matchResult; }
+
+    public void setMatchResult(String matchResult) { this.matchResult = matchResult; }
 
     public boolean isFavouriteMatch() { return favouriteMatch; }
 
