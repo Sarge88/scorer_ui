@@ -19,9 +19,10 @@ public class CommonNetworkInteractor {
         EventBus.getDefault().post(event);
     }
 
-    protected void creaateAndPostEvent(CommonEvent event, Response<?> response, List items) {
+    protected void createAndPostEvent(CommonEvent event, Response<?> response, List items) {
         event.setCode(response.code());
         event.setItems(items);
         EventBus.getDefault().post(event);
     }
 }
+

@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name="gkalapis.scorerui.ui.livematches.LiveMatchesActivity" />
-        <activity android:name="gkalapis.scorerui.ui.livetable.LiveTableActivity" />
+        <activity android:name="gkalapis.scorerui.ui.users.UsersActivity" />
         <activity android:name="gkalapis.scorerui.ui.favouritematches.FavouriteMatchesActivity" />
     </application>
 

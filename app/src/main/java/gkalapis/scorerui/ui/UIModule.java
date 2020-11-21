@@ -14,6 +14,7 @@ import gkalapis.scorerui.ui.livetable.LiveTablePresenter;
 import gkalapis.scorerui.ui.main.MainPresenter;
 import dagger.Module;
 import dagger.Provides;
+import gkalapis.scorerui.ui.users.UsersPresenter;
 
 @Module
 public class UIModule {
@@ -50,6 +51,12 @@ public class UIModule {
     @Singleton
     public FavouriteMatchesPresenter provideFavouriteMatchesPresenter() {
         return new FavouriteMatchesPresenter();
+    }
+
+    @Provides
+    @Singleton
+    public UsersPresenter provideUsersPresenter() {
+        return new UsersPresenter();
     }
 
     @Provides

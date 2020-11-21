@@ -26,7 +26,7 @@ public class LiveTableInteractor extends CommonNetworkInteractor {
             Response<Table> response = tableCall.execute();
 
             throwExceptionIfNecessary(response);
-            creaateAndPostEvent(event, response, response.body().getStanding());
+            createAndPostEvent(event, response, response.body().getStanding());
         } catch (Exception e) {
             createAndPostErrorEvent(event, e);
         }

@@ -21,15 +21,15 @@ public class UsersInteractor extends CommonNetworkInteractor {
         ScorerUiApplication.injector.inject(this);
     }
 
-    public void getLiveMatches() {
-        GetLiveMatchesEvent event = new GetLiveMatchesEvent();
+    public void getUsers() {
+        GetUsersEvent event = new GetUsersEvent();
 
         try {
             Call <List<User>> call = footballDataApi.listUsers();
             Response <List<User>> response = call.execute();
 
             throwExceptionIfNecessary(response);
-            //createAndPostEvent(event, response, response.body().getUsers());
+            createAndPostEvent(event, response, response.body());
         } catch (Exception e) {
             createAndPostErrorEvent(event, e);
         }

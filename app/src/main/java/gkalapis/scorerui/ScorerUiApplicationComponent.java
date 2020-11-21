@@ -18,6 +18,8 @@ import gkalapis.scorerui.ui.livetable.LiveTablePresenter;
 import gkalapis.scorerui.ui.main.MainActivity;
 import gkalapis.scorerui.ui.main.MainPresenter;
 import dagger.Component;
+import gkalapis.scorerui.ui.users.UsersActivity;
+import gkalapis.scorerui.ui.users.UsersPresenter;
 
 @Singleton
 @Component(modules = {UIModule.class, NetworkModule.class, InteractorModule.class})
@@ -38,5 +40,7 @@ public interface ScorerUiApplicationComponent {
     void inject(FavouriteMatchesInteractor favouriteMatchesInteractor);
     void inject(FavouriteMatchesPresenter favouriteMatchesPresenter);
 
+    void inject(UsersActivity usersActivity);
     void inject(UsersInteractor usersInteractor);
+    void inject(UsersPresenter usersPresenter);
 }

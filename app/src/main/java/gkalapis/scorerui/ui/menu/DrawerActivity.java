@@ -21,6 +21,7 @@ import gkalapis.scorerui.ui.favouritematches.FavouriteMatchesActivity;
 import gkalapis.scorerui.ui.livematches.LiveMatchesActivity;
 import gkalapis.scorerui.ui.livetable.LiveTableActivity;
 import gkalapis.scorerui.ui.main.MainActivity;
+import gkalapis.scorerui.ui.users.UsersActivity;
 
 public class DrawerActivity extends AppCompatActivity {
 
@@ -116,7 +117,7 @@ public class DrawerActivity extends AppCompatActivity {
                     break;
                 }
                 case 2: {
-                    Intent intent = new Intent(DrawerActivity.this, LiveTableActivity.class);
+                    Intent intent = new Intent(DrawerActivity.this, UsersActivity.class);
                     startActivity(intent);
                     break;
                 }

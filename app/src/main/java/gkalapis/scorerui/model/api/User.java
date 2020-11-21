@@ -8,13 +8,16 @@ public class User {
 
     private String name;
 
+    String password;
+
     private int points;
 
     public User() {}
 
-    public User(Long id, String name, int points) {
+    public User(Long id, String name, String password, int points) {
         this.id = id;
         this.name = name;
+        this.password = password;
         this.points = points;
     }
 

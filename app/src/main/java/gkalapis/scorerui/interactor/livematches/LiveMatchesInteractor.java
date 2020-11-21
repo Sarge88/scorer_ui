@@ -26,7 +26,7 @@ public class LiveMatchesInteractor extends CommonNetworkInteractor {
             Response<List<Match>> response = call.execute();
 
             throwExceptionIfNecessary(response);
-            creaateAndPostEvent(event, response, response.body());
+            createAndPostEvent(event, response, response.body());
         } catch (Exception e) {
             createAndPostErrorEvent(event, e);
         }

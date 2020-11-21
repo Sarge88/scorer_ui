@@ -5,6 +5,7 @@ import gkalapis.scorerui.interactor.livematches.LiveMatchesInteractor;
 import gkalapis.scorerui.interactor.livetable.LiveTableInteractor;
 import dagger.Module;
 import dagger.Provides;
+import gkalapis.scorerui.interactor.users.UsersInteractor;
 
 @Module
 public class InteractorModule {
@@ -25,5 +26,10 @@ public class InteractorModule {
     @Provides
     public FavouriteMatchesInteractor provideFavouriteMatchesInteractor() {
         return new FavouriteMatchesInteractor();
+    }
+
+    @Provides
+    public UsersInteractor provideUsersInteractor() {
+        return new UsersInteractor();
     }
 }

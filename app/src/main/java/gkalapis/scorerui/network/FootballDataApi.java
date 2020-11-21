@@ -27,4 +27,9 @@ public interface FootballDataApi {
 
     @GET("/users/findAll")
     Call<List<User>> listUsers();
+
+    //@Post("users/create")
+    //Call<List<User> createUser();
+
+
 }

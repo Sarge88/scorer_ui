@@ -11,8 +11,9 @@
     <string name="drawer_close">Close navigation drawer</string>
 
     <string name="actual_matches">Upcoming matches</string>
+    <string name="users">Users</string>
     <string name="favourite_matches">Favourite matches</string>
-    <string name="standing">Standing</string>
+    <string name="standing">Users</string>
     <string name="home">Home</string>
     <string name="welcome">Welcome</string>
 </resources>
