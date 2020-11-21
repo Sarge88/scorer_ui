@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Scorer</string>
-    <string name="button_show_live_matches">Register</string>
+    <string name="button_show_upcoming_matches">Upcoming matches</string>
     <string name="welcome_text">Welcome in the Scorer App!
         After register/login you can list the upcoming matches to which you
         can bet! You can also see other peoples points on a tablo. And you can
@@ -16,4 +16,6 @@
     <string name="standing">Users</string>
     <string name="home">Home</string>
     <string name="welcome">Welcome</string>
+    <string name="button_restore">Restore</string>
+    <string name="button_register">Register</string>
 </resources>

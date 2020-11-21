@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import javax.inject.Inject;
 
@@ -31,6 +33,32 @@ public class MainActivity extends DrawerActivity implements MainScreen {
                 mainPresenter.startLiveMatchesActivity();
             }
         });
+
+        Button btnRegister = (Button) findViewById(R.id.btnRegister);
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name = ((TextView)findViewById(R.id.register_name_input_field)).getText().toString();
+                String password = ((TextView)findViewById(R.id.register_password_input_field)).getText().toString();
+
+                if(name.length() > 0 && password.length() > 0){
+                    mainPresenter.register(getApplicationContext(), ((TextView)findViewById(R.id.register_name_input_field)).getText().toString(),((TextView)findViewById(R.id.register_password_input_field)).getText().toString());
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "Please fill both name and password!", Toast.LENGTH_LONG).show();
+                }
+
+
+            }
+        });
+
+        Button btnRestore = (Button) findViewById(R.id.btnRestore);
+        btnRestore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainPresenter.restore();
+            }
+        });
     }
 
     @Override
@@ -49,5 +77,16 @@ public class MainActivity extends DrawerActivity implements MainScreen {
     public void showLiveMatches() {
         Intent intent = new Intent(MainActivity.this, LiveMatchesActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void userSuccessfullyRegistered(String name) {
+        Toast.makeText(getApplicationContext(), name + " is successfully created.", Toast.LENGTH_SHORT).show();
+    }
+
+
+    @Override
+    public void showNetworkError(String errorMsg) {
+        Toast.makeText(getApplicationContext(), "Problem is: "+ errorMsg, Toast.LENGTH_SHORT).show();
     }
 }

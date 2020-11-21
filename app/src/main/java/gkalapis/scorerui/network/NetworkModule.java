@@ -1,5 +1,8 @@
 package gkalapis.scorerui.network;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -15,12 +18,15 @@ public class NetworkModule {
     @Provides
     @Singleton
     public Retrofit.Builder provideRetrofit() {
-        return new Retrofit.Builder().addConverterFactory(GsonConverterFactory.create());
+        GsonConverterFactory gsonConverterFactory = GsonConverterFactory.create(new GsonBuilder().setLenient().create());
+        // return new Retrofit.Builder().addConverterFactory(GsonConverterFactory.create());
+        // return new Retrofit.Builder().addConverterFactory(ScalarsConverterFactory.create());
+        return new Retrofit.Builder().addConverterFactory(gsonConverterFactory);
     }
 
     @Provides
     @Singleton
-    public FootballDataApi provideFootballDataApi(Retrofit.Builder retrofitBuilder) {
-        return retrofitBuilder.baseUrl(ENDPOINT_ADDRESS).build().create(FootballDataApi.class);
+    public ScorerAPI provideFootballDataApi(Retrofit.Builder retrofitBuilder) {
+        return retrofitBuilder.baseUrl(ENDPOINT_ADDRESS).build().create(ScorerAPI.class);
     }
 }

@@ -1,6 +1,12 @@
 package gkalapis.scorerui.ui.main;
 
-public interface MainScreen {
+import java.util.List;
+
+import gkalapis.scorerui.ui.common.CommonScreen;
+
+public interface MainScreen extends CommonScreen {
 
     void showLiveMatches();
+
+    void userSuccessfullyRegistered(String name);
 }

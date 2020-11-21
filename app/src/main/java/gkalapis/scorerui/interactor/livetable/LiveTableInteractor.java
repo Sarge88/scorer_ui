@@ -5,14 +5,14 @@ import javax.inject.Inject;
 import gkalapis.scorerui.ScorerUiApplication;
 import gkalapis.scorerui.interactor.common.CommonNetworkInteractor;
 import gkalapis.scorerui.model.api.Table;
-import gkalapis.scorerui.network.FootballDataApi;
+import gkalapis.scorerui.network.ScorerAPI;
 import retrofit2.Call;
 import retrofit2.Response;
 
 public class LiveTableInteractor extends CommonNetworkInteractor {
 
     @Inject
-    FootballDataApi footballDataApi;
+    ScorerAPI scorerAPI;
 
     public LiveTableInteractor() {
         ScorerUiApplication.injector.inject(this);
@@ -22,7 +22,7 @@ public class LiveTableInteractor extends CommonNetworkInteractor {
         GetLiveTableEvent event = new GetLiveTableEvent();
 
         try {
-            Call<Table> tableCall = footballDataApi.getLeagueTable();
+            Call<Table> tableCall = scorerAPI.getLeagueTable();
             Response<Table> response = tableCall.execute();
 
             throwExceptionIfNecessary(response);

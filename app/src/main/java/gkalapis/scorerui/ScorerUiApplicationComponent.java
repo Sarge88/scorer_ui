@@ -6,6 +6,7 @@ import gkalapis.scorerui.interactor.InteractorModule;
 import gkalapis.scorerui.interactor.favouritematches.FavouriteMatchesInteractor;
 import gkalapis.scorerui.interactor.livematches.LiveMatchesInteractor;
 import gkalapis.scorerui.interactor.livetable.LiveTableInteractor;
+import gkalapis.scorerui.interactor.main.MainInteractor;
 import gkalapis.scorerui.interactor.users.UsersInteractor;
 import gkalapis.scorerui.network.NetworkModule;
 import gkalapis.scorerui.ui.UIModule;
@@ -25,7 +26,9 @@ import gkalapis.scorerui.ui.users.UsersPresenter;
 @Component(modules = {UIModule.class, NetworkModule.class, InteractorModule.class})
 public interface ScorerUiApplicationComponent {
 
+
     void inject(MainActivity mainActivity);
+    void inject(MainInteractor mainInteractor);
     void inject(MainPresenter mainPresenter);
 
     void inject(LiveMatchesActivity liveMatchesActivity);

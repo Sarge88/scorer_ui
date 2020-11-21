@@ -10,7 +10,15 @@ public class CommonNetworkInteractor {
 
     protected void throwExceptionIfNecessary(Response<?> response) throws Exception {
         if (response.code() != 200) {
-            throw new Exception("Result code is not 200");
+
+            String message = response.message();
+
+            if (message != null) {
+                throw new Exception(message);
+            } else {
+                throw new Exception("Result code is not 200");
+            }
+
         }
     }
 

@@ -6,16 +6,15 @@ import javax.inject.Inject;
 
 import gkalapis.scorerui.ScorerUiApplication;
 import gkalapis.scorerui.interactor.common.CommonNetworkInteractor;
-import gkalapis.scorerui.interactor.livematches.GetLiveMatchesEvent;
 import gkalapis.scorerui.model.api.User;
-import gkalapis.scorerui.network.FootballDataApi;
+import gkalapis.scorerui.network.ScorerAPI;
 import retrofit2.Call;
 import retrofit2.Response;
 
 public class UsersInteractor extends CommonNetworkInteractor {
 
     @Inject
-    FootballDataApi footballDataApi;
+    ScorerAPI scorerAPI;
 
     public UsersInteractor() {
         ScorerUiApplication.injector.inject(this);
@@ -25,7 +24,7 @@ public class UsersInteractor extends CommonNetworkInteractor {
         GetUsersEvent event = new GetUsersEvent();
 
         try {
-            Call <List<User>> call = footballDataApi.listUsers();
+            Call <List<User>> call = scorerAPI.listUsers();
             Response <List<User>> response = call.execute();
 
             throwExceptionIfNecessary(response);

@@ -2,13 +2,16 @@ package gkalapis.scorerui.network;
 
 import java.util.List;
 
+import gkalapis.scorerui.model.api.AuthenticationResponse;
 import gkalapis.scorerui.model.api.Match;
 import gkalapis.scorerui.model.api.Table;
 import gkalapis.scorerui.model.api.User;
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
+import retrofit2.http.Query;
 
-public interface FootballDataApi {
+public interface ScorerAPI {
 
     /**
      * Returns list of matches
@@ -28,8 +31,8 @@ public interface FootballDataApi {
     @GET("/users/findAll")
     Call<List<User>> listUsers();
 
-    //@Post("users/create")
-    //Call<List<User> createUser();
+    @POST("users/create")
+    Call<String> createUser(@Query("name") String name, @Query("password")String password);
 
 
 }

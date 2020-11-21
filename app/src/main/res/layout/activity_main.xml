@@ -19,6 +19,85 @@
         android:textAlignment="center"
         android:text="@string/welcome_text" />
 
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        >
+        <android.support.v7.widget.AppCompatEditText
+            android:minWidth="100dp"
+            android:layout_height="40dp"
+            android:layout_width="80dp"
+            android:textColor="@color/colorPrimary"
+            android:id="@+id/register_name_input_field"
+            android:hint="asd"
+            android:inputType="text"/>
+
+
+        <android.support.v7.widget.AppCompatEditText
+            android:minWidth="60dp"
+            android:layout_height="40dp"
+            android:layout_width="80dp"
+            android:textColor="@color/colorPrimary"
+            android:id="@+id/register_password_input_field"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:textColor="#FCF5F5"
+            android:background="#35BBC0"
+            android:layout_margin="8dp"
+            android:text="@string/button_register"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        >
+        <android.support.v7.widget.AppCompatEditText
+            android:minWidth="150dp"
+            android:layout_height="40dp"
+            android:layout_width="80dp"
+            android:textColor="@color/colorPrimary"
+            android:id="@+id/restore_name_input_field"
+            android:hint="asd"
+            android:inputType="text"/>
+
+
+        <android.support.v7.widget.AppCompatEditText
+            android:minWidth="150dp"
+            android:layout_height="40dp"
+            android:layout_width="80dp"
+            android:textColor="@color/colorPrimary"
+            android:id="@+id/restore_password_input_field"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/btnRestore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:textColor="#FCF5F5"
+            android:background="#35BBC0"
+            android:layout_margin="8dp"
+            android:text="@string/button_restore"/>
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
     <Button
         android:id="@+id/btnShowLiveMatches"
         android:layout_width="wrap_content"
@@ -27,6 +106,9 @@
         android:padding="10dp"
         android:textColor="#FCF5F5"
         android:background="#35BBC0"
-        android:text="@string/button_show_live_matches"/>
+        android:layout_margin="8dp"
+        android:text="@string/button_show_upcoming_matches"/>
+
+
 
 </LinearLayout>
