@@ -13,10 +13,7 @@ import gkalapis.scorerui.ScorerUiApplication;
 import gkalapis.scorerui.di.Network;
 import gkalapis.scorerui.interactor.main.MainInteractor;
 import gkalapis.scorerui.interactor.main.RegisterEvent;
-import gkalapis.scorerui.interactor.users.GetUsersEvent;
-import gkalapis.scorerui.ui.Presenter;
 import gkalapis.scorerui.ui.common.CommonPresenter;
-import gkalapis.scorerui.ui.users.UsersScreen;
 
 public class MainPresenter extends CommonPresenter<MainScreen> {
 
@@ -49,6 +46,10 @@ public class MainPresenter extends CommonPresenter<MainScreen> {
     }
 
     public void restore() {
+    }
+
+    public boolean isRegisterVisible(Context context) {
+        return !mainInteractor.isUserExist(context);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

@@ -10,5 +10,7 @@ public interface LiveMatchesScreen extends CommonScreen {
 
     void showLiveMatches(List<Match> matches);
 
+    void betCreatedSuccessfully(String response);
+
     void addMatchToFavourites(FavouriteMatch favouriteMatch);
 }

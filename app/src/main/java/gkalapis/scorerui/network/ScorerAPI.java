@@ -2,7 +2,7 @@ package gkalapis.scorerui.network;
 
 import java.util.List;
 
-import gkalapis.scorerui.model.api.AuthenticationResponse;
+import gkalapis.scorerui.model.api.BetResponse;
 import gkalapis.scorerui.model.api.Match;
 import gkalapis.scorerui.model.api.Table;
 import gkalapis.scorerui.model.api.User;
@@ -33,6 +33,9 @@ public interface ScorerAPI {
 
     @POST("users/create")
     Call<String> createUser(@Query("name") String name, @Query("password")String password);
+
+    @POST("bet/create")
+    Call<BetResponse> createBet(@Query("matchIds") Integer matchId, @Query("userId")String userId, @Query("homeGoals")Integer homeTeamGoals, @Query("awayGoals")Integer awayTeamGoals);
 
 
 }

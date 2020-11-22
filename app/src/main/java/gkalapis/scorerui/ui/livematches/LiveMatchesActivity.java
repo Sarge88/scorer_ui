@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -43,9 +44,9 @@ public class LiveMatchesActivity extends DrawerActivity implements LiveMatchesSc
 
         matchArrayList = new ArrayList<>();
         liveMatchesAdapter = new LiveMatchesAdapter(getApplicationContext(), matchArrayList);
-        liveMatchesAdapter.setOnItemClickListener(new LiveMatchesAdapter.ClickListener() {
+        liveMatchesAdapter.setOnFavClickListener(new LiveMatchesAdapter.ClickListener() {
             @Override
-            public void onItemClick(int position, View v) {
+            public void onItemClick(int position) {
                 Match match = matchArrayList.get(position);
 
                 if (match.isFavouriteMatch()) {
@@ -60,6 +61,15 @@ public class LiveMatchesActivity extends DrawerActivity implements LiveMatchesSc
                 liveMatchesAdapter.notifyDataSetChanged();
             }
         });
+        liveMatchesAdapter.setOnSaveClickListener(new LiveMatchesAdapter.SaveClickListener() {
+            @Override
+            public void onItemClick(int matchPosition, int homeBet, int awayBet) {
+                Log.d("MainActivity", "Home bet = " + homeBet + " Away bet = " + awayBet + " MatchPosition" + matchPosition);
+                Match match = matchArrayList.get(matchPosition);
+                liveMatchesPresenter.createBet(getApplicationContext(), match.getId(), homeBet, awayBet);
+            }
+        });
+
         recyclerViewMatches.setAdapter(liveMatchesAdapter);
 
         swipeRefreshLayoutMatches = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayoutTable);
@@ -109,6 +119,11 @@ public class LiveMatchesActivity extends DrawerActivity implements LiveMatchesSc
         matchArrayList.addAll(matches);
         updateFixtures(favouriteMatchList);
         liveMatchesAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void betCreatedSuccessfully(String response) {
+        Toast.makeText(getApplicationContext(),"Bet created successfully", Toast.LENGTH_LONG).show();
     }
 
     @Override

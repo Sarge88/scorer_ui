@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 
 import gkalapis.scorerui.R;
@@ -15,7 +17,8 @@ import gkalapis.scorerui.model.api.Match;
 
 public class LiveMatchesAdapter extends RecyclerView.Adapter<LiveMatchesAdapter.ViewHolder> {
 
-    private static ClickListener clickListener;
+    private static ClickListener favClickListener;
+    private static SaveClickListener saveClickListener;
     private Context context;
     private ArrayList<Match> matchList;
 
@@ -30,17 +33,19 @@ public class LiveMatchesAdapter extends RecyclerView.Adapter<LiveMatchesAdapter.
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
         Match match = matchList.get(position);
 
-        String[] dateAndTime = match.getDateTime().toString().split("T");
-        holder.tvDate.setText(dateAndTime[0]);
-        holder.tvTime.setText(dateAndTime[1].substring(0, dateAndTime[1].lastIndexOf(":")));
+        LocalDateTime dateTime = LocalDateTime.ofInstant(match.getDateTime().toInstant(), ZoneId.systemDefault());
+        holder.tvDate.setText(dateTime.getYear() + "-" + dateTime.getMonthValue() + "-" + dateTime.getDayOfMonth());
+        holder.tvTime.setText(dateTime.getHour() + ":" + (dateTime.getMinute() == 0 ? "00" : dateTime.getMinute()));
         holder.tvHomeTeam.setText(match.getHomeTeamName());
         holder.tvAwayTeam.setText(match.getAwayTeamName());
 
-        holder.tvHomeTeamGoals.setText(match.getHomeTeamGoals() == null ? "-" : match.getHomeTeamGoals().toString());
-        holder.tvAwayTeamGoals.setText(match.getAwayTeamGoals() == null ? "-" : match.getAwayTeamGoals().toString());
+        if(match.getHomeTeamGoals() != null && match.getAwayTeamGoals() != null) {
+            holder.tvHomeTeamGoals.setText(match.getHomeTeamGoals().toString());
+            holder.tvAwayTeamGoals.setText(match.getAwayTeamGoals().toString());
+        }
 
 
         if (match.isFavouriteMatch()) {
@@ -50,6 +55,20 @@ public class LiveMatchesAdapter extends RecyclerView.Adapter<LiveMatchesAdapter.
             holder.favIcon.setImageResource(R.drawable.star_unchecked);
             holder.favIcon.setTag(R.drawable.star_unchecked);
         }
+
+        holder.favIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                favClickListener.onItemClick(holder.getAdapterPosition());
+            }
+        });
+        holder.saveIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Check home and away bet is empty
+                saveClickListener.onItemClick(holder.getAdapterPosition(), Integer.valueOf(holder.tvHomeTeamGoals.getText().toString()),Integer.valueOf(holder.tvAwayTeamGoals.getText().toString()));
+            }
+        });
     }
 
     @Override
@@ -57,7 +76,8 @@ public class LiveMatchesAdapter extends RecyclerView.Adapter<LiveMatchesAdapter.
         return matchList.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        ImageView saveIcon;
         TextView tvDate;
         TextView tvTime;
         TextView tvHomeTeam;
@@ -75,22 +95,24 @@ public class LiveMatchesAdapter extends RecyclerView.Adapter<LiveMatchesAdapter.
             tvHomeTeamGoals = (TextView) itemView.findViewById(R.id.tvHomeTeamGoals);
             tvAwayTeamGoals = (TextView) itemView.findViewById(R.id.tvAwayTeamGoals);
             favIcon = (ImageView) itemView.findViewById(R.id.favIcon);
-            favIcon.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View v) {
-            clickListener.onItemClick(getAdapterPosition(), v);
+            saveIcon = (ImageView) itemView.findViewById(R.id.saveIcon);
         }
 
     }
 
-    public void setOnItemClickListener(ClickListener clickListener) {
-        LiveMatchesAdapter.clickListener = clickListener;
+    public void setOnFavClickListener(ClickListener clickListener) {
+        LiveMatchesAdapter.favClickListener = clickListener;
+    }
+
+    public void setOnSaveClickListener(SaveClickListener clickListener) {
+        LiveMatchesAdapter.saveClickListener = clickListener;
     }
 
     public interface ClickListener {
-        void onItemClick(int position, View v);
+        void onItemClick(int position);
+    }
 
+    public interface SaveClickListener {
+        void onItemClick(int matchPosition, int homeBet, int awayBet);
     }
 }

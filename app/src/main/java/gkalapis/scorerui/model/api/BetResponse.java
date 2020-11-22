@@ -7,24 +7,24 @@ import java.util.Objects;
 import io.swagger.annotations.ApiModel;
 
 @ApiModel(description = "")
-public class AuthenticationResponse {
+public class BetResponse {
 
-    public String getMessage() {
+    public Boolean getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
+    public void setMessage(Boolean message) {
         this.message = message;
     }
 
-    @SerializedName("message")
-    private String message;
+    @SerializedName("success")
+    private Boolean message;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        AuthenticationResponse that = (AuthenticationResponse) o;
+        BetResponse that = (BetResponse) o;
         return Objects.equals(message, that.message);
     }
 

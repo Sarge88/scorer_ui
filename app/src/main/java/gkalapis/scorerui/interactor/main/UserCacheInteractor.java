@@ -18,6 +18,4 @@ public class UserCacheInteractor {
         SharedPreferences sharedPref = context.getSharedPreferences("user_db", Context.MODE_PRIVATE);
         return sharedPref.getString(nameID, null);
     }
-
-
 }

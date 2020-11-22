@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +34,7 @@ public class MainActivity extends DrawerActivity implements MainScreen {
                 mainPresenter.startLiveMatchesActivity();
             }
         });
+
 
         Button btnRegister = (Button) findViewById(R.id.btnRegister);
         btnRegister.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +67,14 @@ public class MainActivity extends DrawerActivity implements MainScreen {
     protected void onStart() {
         super.onStart();
         mainPresenter.attachScreen(this);
+
+        LinearLayout registerContainer = findViewById(R.id.register_container);
+        LinearLayout restoreContainer = findViewById(R.id.restore_container);
+
+        if(!mainPresenter.isRegisterVisible(getApplicationContext())) {
+            restoreContainer.setVisibility(View.GONE);
+            registerContainer.setVisibility(View.GONE);
+        }
     }
 
     @Override

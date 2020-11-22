@@ -42,6 +42,8 @@ public class MainInteractor extends CommonNetworkInteractor {
         }
     }
 
-
+    public boolean isUserExist(Context context) {
+        return userCacheInteractor.getUser(context) != null;
+    }
 
 }

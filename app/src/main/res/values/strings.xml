@@ -18,4 +18,6 @@
     <string name="welcome">Welcome</string>
     <string name="button_restore">Restore</string>
     <string name="button_register">Register</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
 </resources>
