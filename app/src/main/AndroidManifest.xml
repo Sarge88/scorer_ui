@@ -25,6 +25,7 @@
         <activity android:name="gkalapis.scorerui.ui.livematches.LiveMatchesActivity" />
         <activity android:name="gkalapis.scorerui.ui.users.UsersActivity" />
         <activity android:name="gkalapis.scorerui.ui.favouritematches.FavouriteMatchesActivity" />
+        <activity android:name="gkalapis.scorerui.ui.bets.BetsActivity" />
     </application>
 
 </manifest>

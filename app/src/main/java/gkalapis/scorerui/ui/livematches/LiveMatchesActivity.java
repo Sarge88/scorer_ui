@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -85,14 +86,14 @@ public class LiveMatchesActivity extends DrawerActivity implements LiveMatchesSc
         for (Match match : matchArrayList) {
             for (FavouriteMatch favouriteMatch : favouriteMatches) {
                 if (isFixtureAndFavMatchSame(match, favouriteMatch)) {
-                    //match.setFavourite(true);
+                    match.setFavouriteMatch(true);
                 }
             }
         }
     }
 
     private boolean isFixtureAndFavMatchSame(Match match, FavouriteMatch favouriteMatch) {
-        return match.getDateTime().equals(favouriteMatch.getDate()) && match.getHomeTeamName().equals(favouriteMatch.getHomeTeamName());
+        return match.getDateTime().toString().equals(favouriteMatch.getDate()) && match.getHomeTeamName().equals(favouriteMatch.getHomeTeamName());
     }
 
     @Override

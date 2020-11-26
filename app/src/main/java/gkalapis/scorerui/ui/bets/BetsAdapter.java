@@ -40,11 +40,11 @@ public class BetsAdapter extends RecyclerView.Adapter<BetsAdapter.ViewHolder>{
         holder.tvTime.setText(dateTime.getHour() + ":" + (dateTime.getMinute() == 0 ? "00" : dateTime.getMinute()));
         holder.tvHomeTeam.setText(match.getHomeTeamName());
         holder.tvAwayTeam.setText(match.getAwayTeamName());
-        holder.tvHomeTeamGoals.setText(match.getHomeTeamName());
-        holder.tvAwayTeamGoals.setText(match.getAwayTeamName());
+        holder.tvHomeTeamGoals.setText(match.getHomeTeamGoals() == null ? "-" : match.getHomeTeamGoals().toString());
+        holder.tvAwayTeamGoals.setText(match.getAwayTeamGoals() == null ? "-" : match.getAwayTeamGoals().toString());
 
-        holder.tvHomeTeamBetGoals.setText(bet.getHomeTeamGoals());
-        holder.tvAwayTeamBetGoals.setText(bet.getAwayTeamGoals());
+        holder.tvHomeTeamBetGoals.setText(String.valueOf(bet.getHomeTeamGoals()));
+        holder.tvAwayTeamBetGoals.setText(String.valueOf(bet.getAwayTeamGoals()));
     }
 
     @Override

@@ -16,7 +16,7 @@ import gkalapis.scorerui.ScorerUiApplication;
 import gkalapis.scorerui.model.api.Bet;
 import gkalapis.scorerui.ui.menu.DrawerActivity;
 
-public class BetsActivity  extends DrawerActivity implements BetsScreen {
+public class BetsActivity extends DrawerActivity implements BetsScreen {
 
     @Inject
     BetsPresenter betsPresenter;
@@ -29,7 +29,7 @@ public class BetsActivity  extends DrawerActivity implements BetsScreen {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addView(R.layout.activity_bets, R.string.actual_matches);
+        addView(R.layout.activity_bets, R.string.bets);
 
         ScorerUiApplication.injector.inject(this);
 
@@ -61,7 +61,6 @@ public class BetsActivity  extends DrawerActivity implements BetsScreen {
     protected void onStart() {
         super.onStart();
         betsPresenter.attachScreen(this);
-        //betArrayList = betsPresenter.showBets();
         betsPresenter.showBets();
     }
 

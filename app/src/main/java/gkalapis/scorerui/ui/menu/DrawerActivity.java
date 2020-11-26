@@ -17,6 +17,7 @@ import android.widget.FrameLayout;
 import android.widget.ListView;
 
 import gkalapis.scorerui.R;
+import gkalapis.scorerui.ui.bets.BetsActivity;
 import gkalapis.scorerui.ui.favouritematches.FavouriteMatchesActivity;
 import gkalapis.scorerui.ui.livematches.LiveMatchesActivity;
 import gkalapis.scorerui.ui.livetable.LiveTableActivity;
@@ -123,6 +124,11 @@ public class DrawerActivity extends AppCompatActivity {
                 }
                 case 3: {
                     Intent intent = new Intent(DrawerActivity.this, FavouriteMatchesActivity.class);
+                    startActivity(intent);
+                    break;
+                }
+                case 4: {
+                    Intent intent = new Intent(DrawerActivity.this, BetsActivity.class);
                     startActivity(intent);
                     break;
                 }

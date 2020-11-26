@@ -1,5 +1,7 @@
 package gkalapis.scorerui.interactor.favouritematches;
 
+import com.google.common.collect.Lists;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,8 +15,7 @@ public class FavouriteMatchesInteractor {
     }
 
     public List<FavouriteMatch> getFavouriteMatches() {
-        //return  Lists.newArrayList( FavouriteMatch.findAll(FavouriteMatch.class));
-        return new ArrayList<>();
+        return  Lists.newArrayList( FavouriteMatch.findAll(FavouriteMatch.class));
     }
 
     public void createFavouriteMatch(FavouriteMatch favouriteMatch) {
