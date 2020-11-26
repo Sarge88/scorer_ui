@@ -1,5 +1,6 @@
 package gkalapis.scorerui.interactor;
 
+import gkalapis.scorerui.interactor.bets.BetsInteractor;
 import gkalapis.scorerui.interactor.favouritematches.FavouriteMatchesInteractor;
 import gkalapis.scorerui.interactor.livematches.LiveMatchesInteractor;
 import gkalapis.scorerui.interactor.livetable.LiveTableInteractor;
@@ -35,6 +36,9 @@ public class InteractorModule {
 
     @Provides
     public UserCacheInteractor userCacheInteractor() { return new UserCacheInteractor(); }
+
+    @Provides
+    public BetsInteractor betsInteractor() { return new BetsInteractor(); }
 
     @Provides
     public MainInteractor MainInteractor() { return new MainInteractor(); }

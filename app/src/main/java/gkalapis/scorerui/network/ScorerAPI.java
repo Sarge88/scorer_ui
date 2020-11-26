@@ -15,8 +15,8 @@ import retrofit2.http.Query;
 public interface ScorerAPI {
 
 
-    //@GET("/table/")
-    //Call<Table> getLeagueTable();
+    @GET("/table/")
+    Call<Table> getLeagueTable();
 
     @GET("/matches/findByStatus?status=SCHEDULED")
     Call<List<Match>> listMatches(); //
