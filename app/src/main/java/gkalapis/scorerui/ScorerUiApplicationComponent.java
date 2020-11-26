@@ -3,6 +3,7 @@ package gkalapis.scorerui;
 import javax.inject.Singleton;
 
 import gkalapis.scorerui.interactor.InteractorModule;
+import gkalapis.scorerui.interactor.bets.BetsInteractor;
 import gkalapis.scorerui.interactor.favouritematches.FavouriteMatchesInteractor;
 import gkalapis.scorerui.interactor.livematches.LiveMatchesInteractor;
 import gkalapis.scorerui.interactor.livetable.LiveTableInteractor;
@@ -10,6 +11,8 @@ import gkalapis.scorerui.interactor.main.MainInteractor;
 import gkalapis.scorerui.interactor.users.UsersInteractor;
 import gkalapis.scorerui.network.NetworkModule;
 import gkalapis.scorerui.ui.UIModule;
+import gkalapis.scorerui.ui.bets.BetsActivity;
+import gkalapis.scorerui.ui.bets.BetsPresenter;
 import gkalapis.scorerui.ui.favouritematches.FavouriteMatchesActivity;
 import gkalapis.scorerui.ui.favouritematches.FavouriteMatchesPresenter;
 import gkalapis.scorerui.ui.livematches.LiveMatchesActivity;
@@ -25,7 +28,6 @@ import gkalapis.scorerui.ui.users.UsersPresenter;
 @Singleton
 @Component(modules = {UIModule.class, NetworkModule.class, InteractorModule.class})
 public interface ScorerUiApplicationComponent {
-
 
     void inject(MainActivity mainActivity);
     void inject(MainInteractor mainInteractor);
@@ -46,4 +48,8 @@ public interface ScorerUiApplicationComponent {
     void inject(UsersActivity usersActivity);
     void inject(UsersInteractor usersInteractor);
     void inject(UsersPresenter usersPresenter);
+
+    void inject(BetsActivity betsActivity);
+    void inject(BetsInteractor betsInteractor);
+    void inject(BetsPresenter betsPresenter);
 }

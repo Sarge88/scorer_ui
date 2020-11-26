@@ -8,6 +8,7 @@ import java.util.concurrent.Executors;
 import javax.inject.Singleton;
 
 import gkalapis.scorerui.di.Network;
+import gkalapis.scorerui.ui.bets.BetsPresenter;
 import gkalapis.scorerui.ui.favouritematches.FavouriteMatchesPresenter;
 import gkalapis.scorerui.ui.livematches.LiveMatchesPresenter;
 import gkalapis.scorerui.ui.livetable.LiveTablePresenter;
@@ -57,6 +58,12 @@ public class UIModule {
     @Singleton
     public UsersPresenter provideUsersPresenter() {
         return new UsersPresenter();
+    }
+
+    @Provides
+    @Singleton
+    public BetsPresenter provideBetsPresenter() {
+        return new BetsPresenter();
     }
 
     @Provides

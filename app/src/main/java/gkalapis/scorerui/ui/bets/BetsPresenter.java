@@ -1,4 +1,4 @@
-package gkalapis.scorerui.ui.users;
+package gkalapis.scorerui.ui.bets;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -9,42 +9,43 @@ import javax.inject.Inject;
 
 import gkalapis.scorerui.ScorerUiApplication;
 import gkalapis.scorerui.di.Network;
-import gkalapis.scorerui.interactor.users.GetUsersEvent;
-import gkalapis.scorerui.interactor.users.UsersInteractor;
+import gkalapis.scorerui.interactor.bets.BetsInteractor;
+import gkalapis.scorerui.interactor.bets.GetBetsEvent;
 import gkalapis.scorerui.ui.common.CommonPresenter;
 
-public class UsersPresenter extends CommonPresenter<UsersScreen> {
 
+public class BetsPresenter extends CommonPresenter<BetsScreen> {
 
     @Inject
     @Network
     Executor networkExecutor;
 
     @Inject
-    UsersInteractor usersInteractor;
+    BetsInteractor betsInteractor;
+
 
     @Override
-    public void attachScreen(UsersScreen screen) {
+    public void attachScreen(BetsScreen screen) {
         super.attachScreen(screen);
         ScorerUiApplication.injector.inject(this);
     }
 
-    public void showUsers() {
+    public void showBets() {
         networkExecutor.execute(new Runnable() {
             @Override
             public void run() {
-                usersInteractor.getUsers(); //interactorbol
+                betsInteractor.getBets();
             }
         });
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onEventMainThread(final GetUsersEvent event) {
+    public void onEventMainThread(final GetBetsEvent event) {
         if (event.getThrowable() != null) {
             handleNetworkError(event);
         } else {
             if (screen != null) {
-                screen.showUsers(event.getItems());
+                screen.showBets(event.getItems());
             }
         }
     }

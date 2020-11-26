@@ -5,5 +5,6 @@
         <item>@string/actual_matches</item>
         <item>@string/standing</item>
         <item>@string/favourite_matches</item>
+        <item>@string/bets</item>
     </string-array>
 </resources>
