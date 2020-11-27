@@ -9,4 +9,8 @@ public interface MainScreen extends CommonScreen {
     void showLiveMatches();
 
     void userSuccessfullyRegistered(String name);
+
+    void showRegisterError();
+
+    void showRestoreError();
 }

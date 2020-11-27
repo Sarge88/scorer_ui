@@ -15,17 +15,17 @@
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
 
-        <activity android:name="gkalapis.scorerui.ui.main.MainActivity">
+        <activity android:name="gkalapis.scorerui.ui.main.MainActivity"
+            android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="gkalapis.scorerui.ui.livematches.LiveMatchesActivity" />
-        <activity android:name="gkalapis.scorerui.ui.users.UsersActivity" />
-        <activity android:name="gkalapis.scorerui.ui.favouritematches.FavouriteMatchesActivity" />
-        <activity android:name="gkalapis.scorerui.ui.bets.BetsActivity" />
+        <activity android:name="gkalapis.scorerui.ui.livematches.LiveMatchesActivity" android:launchMode="singleInstance" />
+        <activity android:name="gkalapis.scorerui.ui.users.UsersActivity" android:launchMode="singleInstance" />
+        <activity android:name="gkalapis.scorerui.ui.favouritematches.FavouriteMatchesActivity" android:launchMode="singleInstance" />
+        <activity android:name="gkalapis.scorerui.ui.bets.BetsActivity" android:launchMode="singleInstance" />
     </application>
 
 </manifest>

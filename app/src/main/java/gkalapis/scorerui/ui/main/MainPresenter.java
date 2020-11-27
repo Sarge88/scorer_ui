@@ -2,17 +2,21 @@ package gkalapis.scorerui.ui.main;
 
 import android.content.Context;
 
+import com.orm.SugarDb;
+
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.concurrent.Executor;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 import gkalapis.scorerui.ScorerUiApplication;
 import gkalapis.scorerui.di.Network;
 import gkalapis.scorerui.interactor.main.MainInteractor;
 import gkalapis.scorerui.interactor.main.RegisterEvent;
+import gkalapis.scorerui.interactor.main.UserCacheInteractor;
 import gkalapis.scorerui.ui.common.CommonPresenter;
 
 public class MainPresenter extends CommonPresenter<MainScreen> {
@@ -41,11 +45,15 @@ public class MainPresenter extends CommonPresenter<MainScreen> {
                 mainInteractor.register(context, name, password);
             }
         });
+    }
 
 
+    public String getUserName(Context context){
+        return mainInteractor.getUser(context);
     }
 
     public void restore() {
+
     }
 
     public boolean isRegisterVisible(Context context) {
@@ -55,10 +63,13 @@ public class MainPresenter extends CommonPresenter<MainScreen> {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(final RegisterEvent event) {
         if (event.getThrowable() != null) {
-            handleNetworkError(event);
+            if (screen != null) {
+                screen.showRegisterError(); //elkapja ha rossz
+            }
+            //handleNetworkError(event); // itt kapja el ha rossz
         } else {
             if (screen != null) {
-                screen.userSuccessfullyRegistered(event.getItems().get(0));
+                screen.userSuccessfullyRegistered(event.getItems().get(0)); //elkapja ha jó
             }
         }
     }

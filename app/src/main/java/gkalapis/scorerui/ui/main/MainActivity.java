@@ -20,11 +20,17 @@ public class MainActivity extends DrawerActivity implements MainScreen {
     @Inject
     MainPresenter mainPresenter;
 
+    LinearLayout registerContainer;
+    LinearLayout restoreContainer;
+    TextView welcomeTextview;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addView(R.layout.activity_main, R.string.welcome);
 
+        registerContainer = findViewById(R.id.register_container);
+        restoreContainer = findViewById(R.id.restore_container);
         ScorerUiApplication.injector.inject(this);
 
         Button btnShowLiveMatches = (Button) findViewById(R.id.btnShowLiveMatches);
@@ -68,8 +74,15 @@ public class MainActivity extends DrawerActivity implements MainScreen {
         super.onStart();
         mainPresenter.attachScreen(this);
 
-        LinearLayout registerContainer = findViewById(R.id.register_container);
-        LinearLayout restoreContainer = findViewById(R.id.restore_container);
+        welcomeTextview = findViewById(R.id.tvWelcome);
+
+        if(!mainPresenter.isRegisterVisible(getApplicationContext())){
+            welcomeTextview.setText(String.format(getString(R.string.welcome_text), mainPresenter.getUserName(getApplicationContext()))); //userCacheInteractor
+        }
+        else
+        {
+            welcomeTextview.setText(String.format(getString(R.string.welcome_text), "")); //userCacheInteractor
+        }
 
         if(!mainPresenter.isRegisterVisible(getApplicationContext())) {
             restoreContainer.setVisibility(View.GONE);
@@ -91,12 +104,25 @@ public class MainActivity extends DrawerActivity implements MainScreen {
 
     @Override
     public void userSuccessfullyRegistered(String name) {
+        restoreContainer.setVisibility(View.GONE);
+        registerContainer.setVisibility(View.GONE);
+        welcomeTextview.setText(String.format(getString(R.string.welcome_text), mainPresenter.getUserName(getApplicationContext()))); //userCacheInteractor
         Toast.makeText(getApplicationContext(), name + " is successfully created.", Toast.LENGTH_SHORT).show();
     }
 
 
     @Override
-    public void showNetworkError(String errorMsg) {
-        Toast.makeText(getApplicationContext(), "Problem is: "+ errorMsg, Toast.LENGTH_SHORT).show();
+    public void showRegisterError() {
+        Toast.makeText(getApplicationContext(), "User already exists", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showRestoreError() {
+        Toast.makeText(getApplicationContext(), "User does not exist", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showNetworkError(String errorMsg){
+        Toast.makeText(getApplicationContext(), "Something went wrong" + errorMsg, Toast.LENGTH_SHORT).show();
     }
 }

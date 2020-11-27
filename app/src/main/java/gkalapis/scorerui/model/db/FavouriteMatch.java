@@ -2,9 +2,11 @@ package gkalapis.scorerui.model.db;
 
 import com.orm.SugarRecord;
 
+import java.util.Date;
+
 public class FavouriteMatch extends SugarRecord {
 
-    private String date;
+    private Date date;
 
     private String homeTeamName;
 
@@ -17,7 +19,7 @@ public class FavouriteMatch extends SugarRecord {
     public FavouriteMatch() {
     }
 
-    public FavouriteMatch(String date, String homeTeamName, String homeTeamGoals, String awayTeamName, String awayTeamGoals) {
+    public FavouriteMatch(Date date, String homeTeamName, String homeTeamGoals, String awayTeamName, String awayTeamGoals) {
         this.date = date;
         this.homeTeamName = homeTeamName;
         this.homeTeamGoals = homeTeamGoals;
@@ -25,11 +27,11 @@ public class FavouriteMatch extends SugarRecord {
         this.awayTeamGoals = awayTeamGoals;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

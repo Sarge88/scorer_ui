@@ -93,7 +93,7 @@ public class LiveMatchesActivity extends DrawerActivity implements LiveMatchesSc
     }
 
     private boolean isFixtureAndFavMatchSame(Match match, FavouriteMatch favouriteMatch) {
-        return match.getDateTime().toString().equals(favouriteMatch.getDate()) && match.getHomeTeamName().equals(favouriteMatch.getHomeTeamName());
+        return match.getDateTime().equals(favouriteMatch.getDate()) && match.getHomeTeamName().equals(favouriteMatch.getHomeTeamName());
     }
 
     @Override
@@ -143,7 +143,7 @@ public class LiveMatchesActivity extends DrawerActivity implements LiveMatchesSc
     private FavouriteMatch createFavouriteMatchFromFixture(Match match) {
         FavouriteMatch favouriteMatch = new FavouriteMatch();
 
-        favouriteMatch.setDate(match.getDateTime().toString());
+        favouriteMatch.setDate(match.getDateTime());
         favouriteMatch.setHomeTeamName(match.getHomeTeamName());
         favouriteMatch.setAwayTeamName(match.getAwayTeamName());
 

@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 
 import gkalapis.scorerui.R;
@@ -25,7 +27,7 @@ public class FavouriteMatchesAdapter extends RecyclerView.Adapter<FavouriteMatch
     }
 
     public FavouriteMatchesAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.match_row, viewGroup, false);
+        View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.favourites_row, viewGroup, false);
         return new FavouriteMatchesAdapter.ViewHolder(itemView);
     }
 
@@ -33,9 +35,9 @@ public class FavouriteMatchesAdapter extends RecyclerView.Adapter<FavouriteMatch
     public void onBindViewHolder(FavouriteMatchesAdapter.ViewHolder holder, int position) {
         FavouriteMatch favouriteMatch = favouriteMatchList.get(position);
 
-        String[] dateAndTime = favouriteMatch.getDate().split("T");
-        holder.tvDate.setText(dateAndTime[0]);
-        holder.tvTime.setText(dateAndTime[1].substring(0,dateAndTime[1].lastIndexOf(":")));
+        LocalDateTime dateTime = LocalDateTime.ofInstant(favouriteMatch.getDate().toInstant(), ZoneId.systemDefault());
+        holder.tvDate.setText(dateTime.getYear() + "-" + dateTime.getMonthValue() + "-" + dateTime.getDayOfMonth());
+        holder.tvTime.setText(dateTime.getHour() + ":" + (dateTime.getMinute() == 0 ? "00" : dateTime.getMinute()));
 
         holder.tvHomeTeam.setText(favouriteMatch.getHomeTeamName());
         holder.tvAwayTeam.setText(favouriteMatch.getAwayTeamName());
