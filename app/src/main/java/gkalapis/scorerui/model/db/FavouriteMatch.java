@@ -3,6 +3,7 @@ package gkalapis.scorerui.model.db;
 import com.orm.SugarRecord;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class FavouriteMatch extends SugarRecord {
 
@@ -65,5 +66,10 @@ public class FavouriteMatch extends SugarRecord {
 
     public void setAwayTeamGoals(String awayTeamGoals) {
         this.awayTeamGoals = awayTeamGoals;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(date, homeTeamName, homeTeamGoals, awayTeamName, awayTeamGoals);
     }
 }

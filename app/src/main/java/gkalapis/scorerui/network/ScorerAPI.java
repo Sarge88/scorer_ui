@@ -21,17 +21,18 @@ public interface ScorerAPI {
     @GET("/matches/findByStatus?status=SCHEDULED")
     Call<List<Match>> listMatches(); //
 
-    @GET("bet/list")
-    Call<List<Bet>> listBets();
+    @POST("users/create")
+    Call<String> createUser(@Query("name") String name, @Query("password")String password);
 
     @GET("/users/findAll")
     Call<List<User>> listUsers();
 
-    @POST("users/create")
-    Call<String> createUser(@Query("name") String name, @Query("password")String password);
+    @GET("users/restore")
+    Call<String> restoreUser(@Query("name") String name, @Query("password")String password);
 
     @POST("bet/create")
     Call<BetResponse> createBet(@Query("matchIds") Integer matchId, @Query("userId")String userId, @Query("homeGoals")Integer homeTeamGoals, @Query("awayGoals")Integer awayTeamGoals);
 
-
+    @GET("bet/list")
+    Call<List<Bet>> listBets(@Query("userName") String userName); // "" --> username egyenlő lesz a userID-val
 }

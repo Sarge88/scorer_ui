@@ -50,7 +50,7 @@ public class MainActivity extends DrawerActivity implements MainScreen {
                 String password = ((TextView)findViewById(R.id.register_password_input_field)).getText().toString();
 
                 if(name.length() > 0 && password.length() > 0){
-                    mainPresenter.register(getApplicationContext(), ((TextView)findViewById(R.id.register_name_input_field)).getText().toString(),((TextView)findViewById(R.id.register_password_input_field)).getText().toString());
+                    mainPresenter.register(getApplicationContext(), name, password);
                 }
                 else {
                     Toast.makeText(getApplicationContext(), "Please fill both name and password!", Toast.LENGTH_LONG).show();
@@ -64,7 +64,14 @@ public class MainActivity extends DrawerActivity implements MainScreen {
         btnRestore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mainPresenter.restore();
+                String name = ((TextView)findViewById(R.id.restore_name_input_field)).getText().toString();
+                String password = ((TextView)findViewById(R.id.restore_password_input_field)).getText().toString();
+                if(name.length() > 0 && password.length() > 0){
+                    mainPresenter.restore(getApplicationContext(), name, password);
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "Please fill both name and password!", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
@@ -108,6 +115,14 @@ public class MainActivity extends DrawerActivity implements MainScreen {
         registerContainer.setVisibility(View.GONE);
         welcomeTextview.setText(String.format(getString(R.string.welcome_text), mainPresenter.getUserName(getApplicationContext()))); //userCacheInteractor
         Toast.makeText(getApplicationContext(), name + " is successfully created.", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void userSuccessfullyRestored(String name) {
+        restoreContainer.setVisibility(View.GONE);
+        registerContainer.setVisibility(View.GONE);
+        welcomeTextview.setText(String.format(getString(R.string.welcome_text), mainPresenter.getUserName(getApplicationContext()))); //userCacheInteractor
+        Toast.makeText(getApplicationContext(), name + " is successfully restored.", Toast.LENGTH_SHORT).show();
     }
 
 

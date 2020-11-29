@@ -1,15 +1,15 @@
 package gkalapis.scorerui.interactor.bets;
 
-import java.util.ArrayList;
+import android.content.Context;
+
 import java.util.List;
 
 import javax.inject.Inject;
 
 import gkalapis.scorerui.ScorerUiApplication;
 import gkalapis.scorerui.interactor.common.CommonNetworkInteractor;
-import gkalapis.scorerui.interactor.livematches.GetLiveMatchesEvent;
+import gkalapis.scorerui.interactor.main.UserCacheInteractor;
 import gkalapis.scorerui.model.api.Bet;
-import gkalapis.scorerui.model.api.Match;
 import gkalapis.scorerui.network.ScorerAPI;
 import retrofit2.Call;
 import retrofit2.Response;
@@ -19,16 +19,19 @@ public class BetsInteractor extends CommonNetworkInteractor {
     @Inject
     ScorerAPI scorerAPI;
 
+    @Inject
+    UserCacheInteractor userCacheInteractor;
+
 
     public BetsInteractor() {
         ScorerUiApplication.injector.inject(this);
     }
 
-    public void getBets() {
+    public void getBets(Context context) {
         GetBetsEvent event = new GetBetsEvent();
-
+        String name = userCacheInteractor.getUser(context);
         try {
-            Call<List<Bet>> call = scorerAPI.listBets();
+            Call<List<Bet>> call = scorerAPI.listBets(name);
             Response<List<Bet>> response = call.execute();
 
             throwExceptionIfNecessary(response);

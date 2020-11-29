@@ -129,7 +129,7 @@ public class LiveMatchesActivity extends DrawerActivity implements LiveMatchesSc
 
     @Override
     public void addMatchToFavourites(FavouriteMatch favouriteMatch) {
-        liveMatchesPresenter.addFavouriteMatch(favouriteMatch);
+        liveMatchesPresenter.addFavouriteMatch(favouriteMatch, getApplicationContext());
     }
 
     @Override

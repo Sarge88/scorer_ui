@@ -1,9 +1,12 @@
 package gkalapis.scorerui.ui.bets;
 
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -33,6 +36,18 @@ public class BetsActivity extends DrawerActivity implements BetsScreen {
 
         ScorerUiApplication.injector.inject(this);
 
+        //HEADER
+        ConstraintLayout betHeader = findViewById(R.id.bet_header);
+
+        ((TextView) betHeader.findViewById(R.id.tvDate)).setText("Date");
+        betHeader.findViewById(R.id.tvTime).setVisibility(View.GONE);
+        ((TextView) betHeader.findViewById(R.id.tvHomeTeam)).setText("Teams");
+        betHeader.findViewById(R.id.tvAwayTeam).setVisibility(View.GONE);
+        ((TextView) betHeader.findViewById(R.id.tvHomeTeamGoals)).setText("Goals");
+        betHeader.findViewById(R.id.tvAwayTeamGoals).setVisibility(View.GONE);
+        ((TextView) betHeader.findViewById(R.id.tvHomeTeamBetGoals)).setText("Bets");
+        betHeader.findViewById(R.id.tvAwayTeamBetGoals).setVisibility(View.GONE);
+
         recyclerViewBets = (RecyclerView) findViewById(R.id.recyclerViewBets);
         LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
@@ -61,7 +76,7 @@ public class BetsActivity extends DrawerActivity implements BetsScreen {
     protected void onStart() {
         super.onStart();
         betsPresenter.attachScreen(this);
-        betsPresenter.showBets();
+        betsPresenter.showBets(getApplicationContext());
     }
 
     @Override

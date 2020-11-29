@@ -6,6 +6,7 @@ import android.util.Log;
 import java.util.Arrays;
 import java.util.Base64;
 import java.util.Base64.Encoder;
+import java.util.Base64.Decoder;
 
 import javax.inject.Inject;
 
@@ -47,8 +48,24 @@ public class MainInteractor extends CommonNetworkInteractor {
         }
     }
 
-    public void restore() {
+    public void restore(Context context, String name, String  password) {
+        RestoreEvent event = new RestoreEvent();
 
+        Encoder encoder = Base64.getEncoder();
+        String encodedPassword = encoder.encodeToString(password.getBytes());
+
+        Log.d("mainInteractor", "DehashedPassword: "+encodedPassword);
+
+        try {
+            Call<String> userCall = scorerAPI.restoreUser(name, encodedPassword);
+            Response<String> response = userCall.execute();
+
+            throwExceptionIfNecessary(response); // ha valami rossz akk nem megy el
+            userCacheInteractor.setUser(context, name);
+            createAndPostEvent(event, response, Arrays.asList(response.body())); //event elküldésre kerül
+        } catch (Exception e) {
+            createAndPostErrorEvent(event, e);
+        }
     }
 
     public boolean isUserExist(Context context) {

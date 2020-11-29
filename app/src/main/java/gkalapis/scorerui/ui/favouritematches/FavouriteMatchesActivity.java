@@ -1,5 +1,6 @@
 package gkalapis.scorerui.ui.favouritematches;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -42,7 +43,7 @@ public class FavouriteMatchesActivity extends DrawerActivity implements Favourit
             @Override
             public void onItemClick(int position, View v) {
                 FavouriteMatch favouriteMatch = favouriteMatchesArrayList.get(position);
-                favouriteMatchesPresenter.removeFavouriteMatch(favouriteMatch.getId());
+                favouriteMatchesPresenter.removeFavouriteMatch(favouriteMatch.getId(), getApplicationContext());
                 favouriteMatchesPresenter.showFavouriteMatches();
             }
         });
@@ -72,6 +73,6 @@ public class FavouriteMatchesActivity extends DrawerActivity implements Favourit
 
     @Override
     public void removeFromFavourites(long rowId) {
-        favouriteMatchesPresenter.removeFavouriteMatch(rowId);
+        favouriteMatchesPresenter.removeFavouriteMatch(rowId, getApplicationContext());
     }
 }

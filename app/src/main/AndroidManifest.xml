@@ -26,6 +26,7 @@
         <activity android:name="gkalapis.scorerui.ui.users.UsersActivity" android:launchMode="singleInstance" />
         <activity android:name="gkalapis.scorerui.ui.favouritematches.FavouriteMatchesActivity" android:launchMode="singleInstance" />
         <activity android:name="gkalapis.scorerui.ui.bets.BetsActivity" android:launchMode="singleInstance" />
+        <receiver android:name=".interactor.main.NotificationReceiver"/>
     </application>
 
 </manifest>

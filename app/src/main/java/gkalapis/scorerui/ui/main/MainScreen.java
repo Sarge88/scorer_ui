@@ -10,6 +10,8 @@ public interface MainScreen extends CommonScreen {
 
     void userSuccessfullyRegistered(String name);
 
+    void userSuccessfullyRestored(String name);
+
     void showRegisterError();
 
     void showRestoreError();

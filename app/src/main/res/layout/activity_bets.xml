@@ -6,10 +6,19 @@
     android:orientation="vertical"
     tools:context="gkalapis.scorerui.ui.main.MainActivity">
 
+    <include
+        android:id="@+id/bet_header"
+        layout="@layout/bet_row" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@android:color/black"
+        />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerViewBets"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
 
 </LinearLayout>

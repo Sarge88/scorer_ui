@@ -16,6 +16,7 @@ import gkalapis.scorerui.ScorerUiApplication;
 import gkalapis.scorerui.di.Network;
 import gkalapis.scorerui.interactor.main.MainInteractor;
 import gkalapis.scorerui.interactor.main.RegisterEvent;
+import gkalapis.scorerui.interactor.main.RestoreEvent;
 import gkalapis.scorerui.interactor.main.UserCacheInteractor;
 import gkalapis.scorerui.ui.common.CommonPresenter;
 
@@ -47,14 +48,21 @@ public class MainPresenter extends CommonPresenter<MainScreen> {
         });
     }
 
+    public void restore(final Context context, final String name, final String  password) {
+        networkExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                mainInteractor.restore(context, name, password);
+            }
+        });
+    }
+
 
     public String getUserName(Context context){
         return mainInteractor.getUser(context);
     }
 
-    public void restore() {
 
-    }
 
     public boolean isRegisterVisible(Context context) {
         return !mainInteractor.isUserExist(context);
@@ -70,6 +78,20 @@ public class MainPresenter extends CommonPresenter<MainScreen> {
         } else {
             if (screen != null) {
                 screen.userSuccessfullyRegistered(event.getItems().get(0)); //elkapja ha jó
+            }
+        }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEventMainThread(final RestoreEvent event) {
+        if (event.getThrowable() != null) {
+            if (screen != null) {
+                screen.showRestoreError();
+            }
+            //handleNetworkError(event); // itt kapja el ha rossz
+        } else {
+            if (screen != null) {
+                screen.userSuccessfullyRestored(event.getItems().get(0)); //elkapja ha jó
             }
         }
     }

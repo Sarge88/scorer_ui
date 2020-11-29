@@ -1,5 +1,7 @@
 package gkalapis.scorerui.ui.bets;
 
+import android.content.Context;
+
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
@@ -30,11 +32,11 @@ public class BetsPresenter extends CommonPresenter<BetsScreen> {
         ScorerUiApplication.injector.inject(this);
     }
 
-    public void showBets() {
+    public void showBets(Context context) {
         networkExecutor.execute(new Runnable() {
             @Override
             public void run() {
-                betsInteractor.getBets();
+                betsInteractor.getBets(context);
             }
         });
     }
