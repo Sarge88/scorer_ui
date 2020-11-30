@@ -2,9 +2,11 @@ package gkalapis.scorerui.ui.favouritematches;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +33,15 @@ public class FavouriteMatchesActivity extends DrawerActivity implements Favourit
         addView(R.layout.activity_favouritematches, R.string.favourite_matches);
 
         ScorerUiApplication.injector.inject(this);
+
+        //HEADER
+        ConstraintLayout favouriteMatchesHeader = findViewById(R.id.favourite_matches_header);
+        //favouriteMatchesHeader.findViewById(R.id.favIcon).setVisibility(View.GONE);
+        ((TextView) favouriteMatchesHeader.findViewById(R.id.tvDate)).setText("Date");
+        favouriteMatchesHeader.findViewById(R.id.tvTime).setVisibility(View.GONE);
+        ((TextView) favouriteMatchesHeader.findViewById(R.id.tvHomeTeam)).setText("Teams");
+        favouriteMatchesHeader.findViewById(R.id.tvAwayTeam).setVisibility(View.GONE);
+
 
         recyclerViewFavouriteMatches = (RecyclerView) findViewById(R.id.recyclerViewFavouriteMatches);
         LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());

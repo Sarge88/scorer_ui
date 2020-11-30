@@ -3,22 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context="gkalapis.scorerui.ui.main.MainActivity">
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="250dp"
         android:src="@drawable/logo" />
 
     <TextView
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="10dp"
         android:text="@string/welcome_text"
         android:id="@+id/tvWelcome"
-        android:textSize="30dp"
+        android:textSize="35dp"
         android:textAlignment="center" />
 
 
@@ -26,7 +27,8 @@
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="18dp"
         android:text="@string/rules_text"
         android:textAlignment="center" />
 
@@ -44,15 +46,16 @@
 
 
     <LinearLayout
-        android:id="@+id/register_container"
+        android:id="@+id/input_container"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:weightSum="7">
 
-        <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/register_name_input_field"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/name_input_field"
+            android:layout_width="150dp"
+            android:layout_gravity="center"
             android:layout_height="40dp"
             android:layout_weight="3"
             android:hint="@string/username"
@@ -61,9 +64,10 @@
             android:textColor="@color/colorPrimary" />
 
 
-        <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/register_password_input_field"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/password_input_field"
+            android:layout_width="150dp"
+            android:layout_gravity="center"
             android:layout_height="40dp"
             android:layout_weight="3"
             android:hint="@string/password"
@@ -71,62 +75,40 @@
             android:minWidth="60dp"
             android:textColor="@color/colorPrimary" />
 
-        <Button
-            android:id="@+id/btnRegister"
+
+
+        <LinearLayout
+            android:id="@+id/buttons_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="8dp"
-            android:layout_weight="1"
-            android:background="#35BBC0"
-            android:padding="10dp"
-            android:text="@string/button_register"
-            android:textColor="#FCF5F5" />
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:background="#35BBC0"
+                android:padding="10dp"
+                android:text="@string/button_register"
+                android:textColor="#FCF5F5" />
+
+            <Button
+                android:id="@+id/btnRestore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:background="#35BBC0"
+                android:padding="10dp"
+                android:text="@string/button_restore"
+                android:textColor="#FCF5F5" />
+
+        </LinearLayout>
+
 
     </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/restore_container"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:orientation="horizontal"
-        android:weightSum="7">
-
-        <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/restore_name_input_field"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:hint="@string/username"
-            android:layout_weight="3"
-            android:inputType="text"
-            android:minWidth="150dp"
-            android:textColor="@color/colorPrimary" />
-
-
-        <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/restore_password_input_field"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_weight="3"
-            android:hint="@string/password"
-            android:inputType="textPassword"
-            android:minWidth="150dp"
-            android:textColor="@color/colorPrimary" />
-
-        <Button
-            android:id="@+id/btnRestore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="8dp"
-            android:layout_weight="1"
-            android:background="#35BBC0"
-            android:padding="10dp"
-            android:text="@string/button_restore"
-            android:textColor="#FCF5F5" />
-
-    </LinearLayout>
-
 
 </LinearLayout>

@@ -1,9 +1,11 @@
 package gkalapis.scorerui.ui.users;
 
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -34,6 +36,14 @@ public class UsersActivity extends DrawerActivity implements UsersScreen {
         super.onCreate(savedInstanceState);
         addView(R.layout.activity_users, R.string.users); // strings.xml
         ScorerUiApplication.injector.inject(this);
+
+
+        //HEADER
+        ConstraintLayout usersHeader = findViewById(R.id.users_header);
+        ((TextView) usersHeader.findViewById(R.id.tvPosition)).setText("Rank");
+        ((TextView) usersHeader.findViewById(R.id.tvUserName)).setText("Name");
+        ((TextView) usersHeader.findViewById(R.id.tvPoints)).setText("Points");
+
 
         recyclerViewMatches = (RecyclerView) findViewById(R.id.userList); //activity users
         LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());

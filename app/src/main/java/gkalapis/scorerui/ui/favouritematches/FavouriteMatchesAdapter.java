@@ -27,7 +27,7 @@ public class FavouriteMatchesAdapter extends RecyclerView.Adapter<FavouriteMatch
     }
 
     public FavouriteMatchesAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.favourites_row, viewGroup, false);
+        View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.favourite_row, viewGroup, false);
         return new FavouriteMatchesAdapter.ViewHolder(itemView);
     }
 
@@ -41,8 +41,8 @@ public class FavouriteMatchesAdapter extends RecyclerView.Adapter<FavouriteMatch
 
         holder.tvHomeTeam.setText(favouriteMatch.getHomeTeamName());
         holder.tvAwayTeam.setText(favouriteMatch.getAwayTeamName());
-        holder.tvHomeTeamGoals.setText(favouriteMatch.getHomeTeamGoals());
-        holder.tvAwayTeamGoals.setText(favouriteMatch.getAwayTeamGoals());
+        //holder.tvHomeTeamGoals.setText(favouriteMatch.getHomeTeamGoals());
+        //holder.tvAwayTeamGoals.setText(favouriteMatch.getAwayTeamGoals());
 
         holder.favIcon.setImageResource(R.drawable.star_checked);
     }

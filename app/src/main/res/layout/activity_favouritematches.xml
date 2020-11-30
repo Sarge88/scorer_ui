@@ -6,6 +6,16 @@
     tools:context="gkalapis.scorerui.ui.main.MainActivity"
     android:orientation="vertical">
 
+        <include
+            android:id="@+id/favourite_matches_header"
+            layout="@layout/favourite_row" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@android:color/black"
+            />
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerViewFavouriteMatches"
             android:layout_width="match_parent"

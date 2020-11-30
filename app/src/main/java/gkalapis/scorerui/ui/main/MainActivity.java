@@ -20,8 +20,7 @@ public class MainActivity extends DrawerActivity implements MainScreen {
     @Inject
     MainPresenter mainPresenter;
 
-    LinearLayout registerContainer;
-    LinearLayout restoreContainer;
+    LinearLayout inputContainer;
     TextView welcomeTextview;
 
     @Override
@@ -29,8 +28,7 @@ public class MainActivity extends DrawerActivity implements MainScreen {
         super.onCreate(savedInstanceState);
         addView(R.layout.activity_main, R.string.welcome);
 
-        registerContainer = findViewById(R.id.register_container);
-        restoreContainer = findViewById(R.id.restore_container);
+        inputContainer = findViewById(R.id.input_container);
         ScorerUiApplication.injector.inject(this);
 
         Button btnShowLiveMatches = (Button) findViewById(R.id.btnShowLiveMatches);
@@ -46,8 +44,8 @@ public class MainActivity extends DrawerActivity implements MainScreen {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = ((TextView)findViewById(R.id.register_name_input_field)).getText().toString();
-                String password = ((TextView)findViewById(R.id.register_password_input_field)).getText().toString();
+                String name = ((TextView)findViewById(R.id.name_input_field)).getText().toString();
+                String password = ((TextView)findViewById(R.id.password_input_field)).getText().toString();
 
                 if(name.length() > 0 && password.length() > 0){
                     mainPresenter.register(getApplicationContext(), name, password);
@@ -64,8 +62,8 @@ public class MainActivity extends DrawerActivity implements MainScreen {
         btnRestore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = ((TextView)findViewById(R.id.restore_name_input_field)).getText().toString();
-                String password = ((TextView)findViewById(R.id.restore_password_input_field)).getText().toString();
+                String name = ((TextView)findViewById(R.id.name_input_field)).getText().toString();
+                String password = ((TextView)findViewById(R.id.password_input_field)).getText().toString();
                 if(name.length() > 0 && password.length() > 0){
                     mainPresenter.restore(getApplicationContext(), name, password);
                 }
@@ -92,8 +90,7 @@ public class MainActivity extends DrawerActivity implements MainScreen {
         }
 
         if(!mainPresenter.isRegisterVisible(getApplicationContext())) {
-            restoreContainer.setVisibility(View.GONE);
-            registerContainer.setVisibility(View.GONE);
+            inputContainer.setVisibility(View.GONE);
         }
     }
 
@@ -111,16 +108,14 @@ public class MainActivity extends DrawerActivity implements MainScreen {
 
     @Override
     public void userSuccessfullyRegistered(String name) {
-        restoreContainer.setVisibility(View.GONE);
-        registerContainer.setVisibility(View.GONE);
+        inputContainer.setVisibility(View.GONE);
         welcomeTextview.setText(String.format(getString(R.string.welcome_text), mainPresenter.getUserName(getApplicationContext()))); //userCacheInteractor
         Toast.makeText(getApplicationContext(), name + " is successfully created.", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void userSuccessfullyRestored(String name) {
-        restoreContainer.setVisibility(View.GONE);
-        registerContainer.setVisibility(View.GONE);
+        inputContainer.setVisibility(View.GONE);
         welcomeTextview.setText(String.format(getString(R.string.welcome_text), mainPresenter.getUserName(getApplicationContext()))); //userCacheInteractor
         Toast.makeText(getApplicationContext(), name + " is successfully restored.", Toast.LENGTH_SHORT).show();
     }

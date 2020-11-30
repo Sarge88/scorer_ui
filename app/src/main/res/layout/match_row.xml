@@ -6,12 +6,15 @@
     android:layout_margin="8dp"
     android:orientation="vertical">
 
-    <android.support.constraint.Guideline
-        android:id="@+id/dateDivider"
+    <ImageView
+        android:id="@+id/favIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.3" />
+        android:layout_marginStart="8dp"
+        android:src="@drawable/star_unchecked"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvDate"
@@ -25,16 +28,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <ImageView
-        android:id="@+id/favIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:src="@drawable/star_unchecked"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/tvTime"
         android:layout_width="wrap_content"
@@ -47,11 +40,12 @@
         app:layout_constraintTop_toBottomOf="@id/tvDate" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/teamDivider"
+        android:id="@+id/dateDivider"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.8" />
+        app:layout_constraintGuide_percent="0.3" />
+
 
     <TextView
         android:id="@+id/tvHomeTeam"
@@ -77,11 +71,11 @@
         app:layout_constraintTop_toBottomOf="@id/tvHomeTeam" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/resultDivider"
+        android:id="@+id/teamDivider"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.9" />
+        app:layout_constraintGuide_percent="0.8" />
 
     <EditText
         android:id="@+id/tvHomeTeamGoals"
@@ -110,6 +104,13 @@
         app:layout_constraintEnd_toStartOf="@id/resultDivider"
         app:layout_constraintStart_toEndOf="@id/teamDivider"
         app:layout_constraintTop_toBottomOf="@id/tvHomeTeam" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/resultDivider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
 
     <ImageView
         android:id="@+id/saveIcon"

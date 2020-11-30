@@ -8,12 +8,7 @@
     android:layout_margin="8dp">
 
 
-    <android.support.constraint.Guideline
-        android:id="@+id/dateDivider"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.2"/>
+
 
     <TextView
         android:id="@+id/tvPosition"
@@ -27,11 +22,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/teamDivider"
+        android:id="@+id/dateDivider"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.8"/>
+        app:layout_constraintGuide_percent="0.2"/>
 
     <TextView
         android:id="@+id/tvUserName"
@@ -45,11 +40,13 @@
         android:textColor="@android:color/black" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/resultDivider"
+        android:id="@+id/teamDivider"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.9"/>
+        app:layout_constraintGuide_percent="0.8"/>
+
+
 
     <TextView
         android:id="@+id/tvPoints"
@@ -57,10 +54,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@id/teamDivider"
-        app:layout_constraintEnd_toStartOf="@id/resultDivider"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:textColor="@android:color/black" />
-
 
 </android.support.constraint.ConstraintLayout>

@@ -1,11 +1,13 @@
 package gkalapis.scorerui.ui.livematches;
 
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -37,6 +39,15 @@ public class LiveMatchesActivity extends DrawerActivity implements LiveMatchesSc
         addView(R.layout.activity_livematches, R.string.actual_matches);
 
         ScorerUiApplication.injector.inject(this);
+
+        //HEADER
+        //favouriteMatchesHeader.findViewById(R.id.favIcon).setVisibility(View.GONE);
+        ((TextView) findViewById(R.id.tvFavouriteText)).setText("Favs");
+        ((TextView) findViewById(R.id.tvDate)).setText("Date");
+        ((TextView) findViewById(R.id.tvHomeTeam)).setText("Teams");
+        ((TextView) findViewById(R.id.tvHomeTeamGoals)).setText("Bets");
+        ((TextView) findViewById(R.id.tvSaveText)).setText("Save");
+
 
         recyclerViewMatches = (RecyclerView) findViewById(R.id.recyclerViewMatches);
         LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
