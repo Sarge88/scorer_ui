@@ -2,22 +2,18 @@ package gkalapis.scorerui.ui.main;
 
 import android.content.Context;
 
-import com.orm.SugarDb;
-
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.concurrent.Executor;
 
 import javax.inject.Inject;
-import javax.inject.Singleton;
 
 import gkalapis.scorerui.ScorerUiApplication;
 import gkalapis.scorerui.di.Network;
 import gkalapis.scorerui.interactor.main.MainInteractor;
 import gkalapis.scorerui.interactor.main.RegisterEvent;
 import gkalapis.scorerui.interactor.main.RestoreEvent;
-import gkalapis.scorerui.interactor.main.UserCacheInteractor;
 import gkalapis.scorerui.ui.common.CommonPresenter;
 
 public class MainPresenter extends CommonPresenter<MainScreen> {

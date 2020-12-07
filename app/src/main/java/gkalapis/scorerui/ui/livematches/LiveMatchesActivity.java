@@ -1,5 +1,6 @@
 package gkalapis.scorerui.ui.livematches;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -78,7 +79,12 @@ public class LiveMatchesActivity extends DrawerActivity implements LiveMatchesSc
             public void onItemClick(int matchPosition, int homeBet, int awayBet) {
                 Log.d("MainActivity", "Home bet = " + homeBet + " Away bet = " + awayBet + " MatchPosition" + matchPosition);
                 Match match = matchArrayList.get(matchPosition);
-                liveMatchesPresenter.createBet(getApplicationContext(), match.getId(), homeBet, awayBet);
+                if (liveMatchesPresenter.isUserLoggedIn(getApplicationContext())){
+                    liveMatchesPresenter.createBet(getApplicationContext(), match.getId(), homeBet, awayBet);
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "Please register or restore a user before betting!", Toast.LENGTH_LONG).show();
+                }
             }
         });
 

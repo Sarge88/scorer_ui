@@ -25,6 +25,7 @@ import gkalapis.scorerui.interactor.livematches.CreateBetEvent;
 import gkalapis.scorerui.interactor.livematches.GetLiveMatchesEvent;
 import gkalapis.scorerui.interactor.livematches.LiveMatchesInteractor;
 import gkalapis.scorerui.interactor.main.NotificationReceiver;
+import gkalapis.scorerui.interactor.main.UserCacheInteractor;
 import gkalapis.scorerui.model.db.FavouriteMatch;
 import gkalapis.scorerui.ui.common.CommonPresenter;
 import gkalapis.scorerui.ui.main.MainActivity;
@@ -42,6 +43,9 @@ public class LiveMatchesPresenter extends CommonPresenter<LiveMatchesScreen> {
 
     @Inject
     FavouriteMatchesInteractor favouriteMatchesInteractor;
+
+    @Inject
+    UserCacheInteractor userCacheInteractor;
 
     @Override
     public void attachScreen(LiveMatchesScreen screen) {
@@ -116,5 +120,9 @@ public class LiveMatchesPresenter extends CommonPresenter<LiveMatchesScreen> {
                 liveMatchesInteractor.createBet(context, matchId, homeBet, awayBet);
             }
         });
+    }
+
+    public boolean isUserLoggedIn(Context context){
+        return userCacheInteractor.getUser(context) != null;
     }
 }

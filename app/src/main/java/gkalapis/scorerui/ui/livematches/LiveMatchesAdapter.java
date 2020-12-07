@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -65,8 +66,15 @@ public class LiveMatchesAdapter extends RecyclerView.Adapter<LiveMatchesAdapter.
         holder.saveIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Check home and away bet is empty
-                saveClickListener.onItemClick(holder.getAdapterPosition(), Integer.valueOf(holder.tvHomeTeamGoals.getText().toString()),Integer.valueOf(holder.tvAwayTeamGoals.getText().toString()));
+                String homeBet = holder.tvHomeTeamGoals.getText().toString();
+                String awayBet = holder.tvAwayTeamGoals.getText().toString();
+                if( homeBet.length() > 0 && awayBet.length() > 0){
+                    saveClickListener.onItemClick(holder.getAdapterPosition(), Integer.valueOf(homeBet),Integer.valueOf(awayBet));
+                }
+                else{
+                    Toast.makeText(holder.tvAwayTeam.getContext(), "Please fill both scores!", Toast.LENGTH_LONG).show();
+                }
+
             }
         });
     }
