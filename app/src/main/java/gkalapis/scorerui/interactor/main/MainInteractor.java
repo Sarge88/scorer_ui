@@ -41,8 +41,8 @@ public class MainInteractor extends CommonNetworkInteractor {
 
             userCacheInteractor.setUser(context, name);
 
-            throwExceptionIfNecessary(response); // ha valami rossz akk nem megy el
-            createAndPostEvent(event, response, Arrays.asList(response.body())); //event elküldésre kerül
+            throwExceptionIfNecessary(response);                                                // ha valami rossz akk nem megy el
+            createAndPostEvent(event, response, Arrays.asList(response.body()));                //event elküldésre kerül
         } catch (Exception e) {
             createAndPostErrorEvent(event, e);
         }

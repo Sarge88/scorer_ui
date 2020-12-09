@@ -15,7 +15,6 @@ import gkalapis.scorerui.ui.common.CommonPresenter;
 
 public class UsersPresenter extends CommonPresenter<UsersScreen> {
 
-
     @Inject
     @Network
     Executor networkExecutor;

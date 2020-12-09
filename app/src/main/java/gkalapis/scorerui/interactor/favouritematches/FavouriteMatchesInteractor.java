@@ -1,8 +1,6 @@
 package gkalapis.scorerui.interactor.favouritematches;
 
 import com.google.common.collect.Lists;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import gkalapis.scorerui.ScorerUiApplication;

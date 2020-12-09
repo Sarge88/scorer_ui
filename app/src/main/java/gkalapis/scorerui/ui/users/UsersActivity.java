@@ -37,13 +37,11 @@ public class UsersActivity extends DrawerActivity implements UsersScreen {
         addView(R.layout.activity_users, R.string.users); // strings.xml
         ScorerUiApplication.injector.inject(this);
 
-
         //HEADER
         ConstraintLayout usersHeader = findViewById(R.id.users_header);
         ((TextView) usersHeader.findViewById(R.id.tvPosition)).setText("Rank");
         ((TextView) usersHeader.findViewById(R.id.tvUserName)).setText("Name");
         ((TextView) usersHeader.findViewById(R.id.tvPoints)).setText("Points");
-
 
         recyclerViewMatches = (RecyclerView) findViewById(R.id.userList); //activity users
         LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());

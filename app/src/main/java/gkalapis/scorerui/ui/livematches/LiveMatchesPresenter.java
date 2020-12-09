@@ -74,16 +74,16 @@ public class LiveMatchesPresenter extends CommonPresenter<LiveMatchesScreen> {
         calendar.set(Calendar.YEAR, dateTime.getYear());
         calendar.set(Calendar.MONTH, dateTime.getMonthValue());
         calendar.set(Calendar.DAY_OF_MONTH, dateTime.getDayOfMonth());
-        //calendar.set(Calendar.HOUR_OF_DAY, dateTime.getHour());
-        calendar.set(Calendar.HOUR_OF_DAY, dateTime.getHour()-1);
+        calendar.set(Calendar.HOUR_OF_DAY, dateTime.getHour());
+        //calendar.set(Calendar.HOUR_OF_DAY, dateTime.getHour()-1);
         calendar.set(Calendar.MINUTE, dateTime.getMinute());
-
 
         Intent myIntent = new Intent(context, NotificationReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, match.hashCode(), myIntent,0);
 
         AlarmManager alarmManager = (AlarmManager)context.getSystemService(ALARM_SERVICE);
-        alarmManager.set(AlarmManager.RTC, calendar.getTimeInMillis(), pendingIntent);
+        //alarmManager.set(AlarmManager.RTC, calendar.getTimeInMillis(), pendingIntent);
+        //alarmManager.set(AlarmManager.RTC, calendar.getTimeInMillis(), pendingIntent);
         Log.d("LiveMacthesPresenter", "Alarm has been scheduled");
     }
 

@@ -14,7 +14,6 @@ import retrofit2.http.Query;
 
 public interface ScorerAPI {
 
-
     @GET("/table/")
     Call<Table> getLeagueTable();
 
@@ -34,5 +33,5 @@ public interface ScorerAPI {
     Call<BetResponse> createBet(@Query("matchIds") Integer matchId, @Query("userId")String userId, @Query("homeGoals")Integer homeTeamGoals, @Query("awayGoals")Integer awayTeamGoals);
 
     @GET("bet/list")
-    Call<List<Bet>> listBets(@Query("userName") String userName); // "" --> username egyenlő lesz a userID-val
+    Call<List<Bet>> listBets(@Query("userName") String userName);
 }

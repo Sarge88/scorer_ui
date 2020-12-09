@@ -20,7 +20,6 @@ public class Match {
 
     private String status;
 
-    // match day in the API
     private int round;
 
     private Date dateTime;

@@ -10,25 +10,13 @@ import android.content.Intent;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
-import android.util.Log;
 
 import gkalapis.scorerui.R;
-import gkalapis.scorerui.ui.bets.BetsActivity;
 import gkalapis.scorerui.ui.livematches.LiveMatchesActivity;
 
 public class NotificationReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        /*
-        Intent service1 = new Intent(context, NotificationService.class);
-        context.startService(service1);
-        Log.i("App", "called receiver method");
-        try{
-            //Utils.generateNotification(context);
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-        */
 
         createNotificationChannel(context);
 

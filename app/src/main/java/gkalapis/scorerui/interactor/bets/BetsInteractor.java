@@ -22,7 +22,6 @@ public class BetsInteractor extends CommonNetworkInteractor {
     @Inject
     UserCacheInteractor userCacheInteractor;
 
-
     public BetsInteractor() {
         ScorerUiApplication.injector.inject(this);
     }
