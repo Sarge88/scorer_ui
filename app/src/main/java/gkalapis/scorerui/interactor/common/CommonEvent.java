@@ -18,6 +18,10 @@ public class CommonEvent<T> {
         this.items = items;
     }
 
+    public List<T> getItems() {
+        return items;
+    }
+
     public int getCode() {
         return code;
     }
@@ -32,10 +36,6 @@ public class CommonEvent<T> {
 
     public void setThrowable(Throwable throwable) {
         this.throwable = throwable;
-    }
-
-    public List<T> getItems() {
-        return items;
     }
 
     public void setItems(List<T> items) {
